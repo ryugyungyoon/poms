@@ -1,4 +1,4 @@
-package com.jg.poms.user.controller;
+package com.jg.poms.controller.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

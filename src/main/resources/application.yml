@@ -6,3 +6,8 @@ spring:
   thymeleaf:
     prefix: classpath:templates/
     suffix: .html
+  datasource:
+    url: jdbc:mysql://121.162.18.38:3306/commute?characterEncoding=UTF-8&serverTimezone=UTC&allowMultiQueries=true&useCursorFetch=true&fetchSize=1000
+    username: root
+    password: 0000
+    driver-class-name: com.mysql.cj.jdbc.Driver

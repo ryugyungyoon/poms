@@ -1,4 +1,4 @@
-package com.jg.poms;
+package com.jg.poms.controller.index;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
