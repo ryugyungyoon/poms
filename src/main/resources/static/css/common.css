@@ -1,0 +1,35 @@
+/* width */
+.w-10 {width:10px !important;}
+.w-20 {width:20px !important;}
+.w-30 {width:30px !important;}
+.w-40 {width:40px !important;}
+.w-50 {width:50px !important;}
+.w-60 {width:60px !important;}
+.w-70 {width:70px !important;}
+.w-80 {width:80px !important;}
+.w-90 {width:90px !important;}
+.w-100 {width:100px !important;}
+.w-110 {width:110px !important;}
+.w-120 {width:120px !important;}
+.w-130 {width:130px !important;}
+
+.wp-40 {width:40% !important;}
+
+/* margin */
+.mt-10 {margin-top: 10px !important;}
+
+.mr-10 {margin-right: 10px !important;}
+
+.mb-10 {margin-bottom: 10px !important;}
+
+.ml-10 {margin-left: 10px !important;}
+
+/* padding */
+.p-0 {padding: 0 !important;}
+.pt-10 {padding-top: 10px !important;}
+
+.pr-10 {padding-right: 10px !important;}
+
+.pb-10 {padding-bottom: 10px !important;}
+
+.pl-10 {padding-left: 10px !important;}
