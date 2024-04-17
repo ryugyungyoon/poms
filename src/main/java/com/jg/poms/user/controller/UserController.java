@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
     @GetMapping("/login-form")
     public String loginForm(){
-        return "";
+        return "user/login-form";
     }
 
     @GetMapping("/terms-form")
