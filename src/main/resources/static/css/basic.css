@@ -1,0 +1,168 @@
+
+/* 그리드 관련 css */
+.gird-container {
+    display: grid;
+    grid-template-columns: minmax(195px, 20%) 65% minmax(145px, 15%);
+    grid-template-rows: 90px 100px 80px minmax(500px, auto) 100px;
+    place-items: stretch stretch;
+}
+.grid-banner {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    background-image: url("/images/poms/poms_main_banner.gif");
+    background-repeat: no-repeat;
+    /*배너 크기 안맞아서 임시 위치 지정. 배너 이미지 바뀌면 해당 코드 삭제*/
+    background-position: left 50% top 52%;
+    background-size: 1080px 1080px;
+    background-color: #000;
+}
+.grid-header {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    background-color: #666;
+}
+.grid-menu {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    background-color: lightgoldenrodyellow;
+}
+.grid-sidebar-a {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+.grid-main {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+.grid-sidebar-b {
+    grid-column: 3 / 4;
+    grid-row: 4 / 5;
+}
+.grid-footer {
+    grid-column: 1 / 4;
+    grid-row: 5 / 6;
+}
+
+/* 공통 css */
+a :link, a:visited, a:hover, a:active {
+    color : #000;
+}
+
+body {
+   font-family: "Noto Sans KR", sans-serif;
+   font-optical-sizing: auto;
+    font-size: 14px;
+   font-weight: normal;
+   font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* 카테고리 css */
+.category__box {
+    display: none;
+    margin: 0;
+    padding: 0 20px;
+    width: 100vw;
+    height: fit-content;
+    background-color: pink;
+}
+
+.category__button:hover ~.category__box,
+.category__box:hover{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 5555;
+}
+
+.category__women {
+    position: relative;
+    left: 100px;
+    bottom: 50px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: goldenrod;
+}
+
+.gender-cate {
+    z-index: 999999;
+    position: relative;
+    width: 100px;
+    height: 30px;
+    padding: 5px 0 0 0;
+    font-size: 16px;
+    font-weight: bold;
+
+    text-align: left;
+}
+
+.gender-cate span {
+    margin-left: 50px;
+    display: none;
+}
+
+.gender-cate:hover > span {
+    display:inline-block;
+    color: #333333;
+    font-size: 12px;
+}
+
+
+
+.gender-cate ~ div {
+    width: 100vw;
+    height: 300px;
+}
+
+.category li{
+    width: auto;
+    height: auto;
+    list-style-type: none;
+}
+
+.category__depth01 {
+    margin: 0;
+    padding: 0;
+}
+
+
+.category__depth01 > li {
+    float: left;
+    background-color: blueviolet;
+}
+
+.category__men {
+    display: none;
+    position: relative;
+    left: 100px;
+    bottom: 401px;
+    z-index: 888888;
+    background-color: deepskyblue;
+}
+
+.category__box a:hover + div { /* 카테고리 박스 a(여성/남성) 마우스오버시 인접한 div 노출 */
+    display: block;
+    z-index: 888888;
+}
+
+.gender-cate--men {
+    position: relative;
+    bottom: 300px;
+}
+
+/*
+
+.gender-cate--men:hover ~ #category__women {
+    display: none;
+}
+*/
+
+
+
+
+
