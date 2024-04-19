@@ -6,6 +6,7 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="/css/common.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <style>
     /* styles.css */
@@ -93,6 +94,50 @@
         display: flex;
     }
 </style>
+<script type="text/javascript">
+$(function (){
+    //회원가입 버튼
+    $('#saveBtn').click(function(){
+        let userData = $('#signup-form').serialize();
+        cfn_ajaxRequest('/save-user', 'POST', userData);
+    });
+})
+
+/**
+ * [기능 함수] 일반 기능 ajax 요청 함수
+ * @author ryu
+ * @param url : 요청 url
+ * @param type : method (post, get)
+ * @param data : 전송 데이터
+ * @returns {void}
+ */
+function cfn_ajaxRequest(url, method, data, callbackId){
+    var callback = url.split('/').reverse()[0];
+    if(callbackId != undefined && callbackId != null) {
+        callback = callbackId;
+    }
+
+    $.ajax({
+        url: url,
+        type: method,
+        data: data,
+        dataType: 'json',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        async: true,
+        success: function(resData){
+            fn_callback(callback, resData);
+        }
+    });
+}
+
+//요청 결과 처리 ajax callback
+function fn_callback(callbackId, resData){
+    if(callbackId === 'save-user'){
+        alert('저장되었습니다.');
+    }
+    else{}
+}
+</script>
 <body>
 <div class="container">
     <form id="signup-form">
@@ -101,16 +146,16 @@
             <input type="text" name="id" id="id" placeholder="아이디">
         </div>
         <div class="form-control">
-            <input type="password" name="password" id="password" placeholder="비밀번호">
+            <input type="password" name="pw" id="pw" placeholder="비밀번호">
         </div>
         <div class="form-control">
-            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="비밀번호 확인">
+            <input type="password" name="confirmPw" id="confirmPw" placeholder="비밀번호 확인">
         </div>
         <div class="form-control">
             <input type="text" name="name" id="name" placeholder="이름">
         </div>
         <div class="form-control">
-            <input type="text" name="birthDay" id="birthDay" placeholder="생년월일">
+            <input type="text" name="birthday" id="birthday" placeholder="생년월일">
         </div>
         <div class="flex">
             <ul class="p-0">
@@ -136,7 +181,7 @@
             <input type="text" name="addressDetail" id="addressDetail" placeholder="상세주소">
         </div>
         <div class="form-control">
-            <input type="button" value="가입하기">
+            <input type="button" id="saveBtn" value="가입하기">
         </div>
     </form>
 </div>
