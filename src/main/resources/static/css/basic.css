@@ -44,20 +44,24 @@
 }
 
 /* 공통 css */
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+}
+
 a :link, a:visited, a:hover, a:active {
     color : #000;
 }
 
-body {
-   font-family: "Noto Sans KR", sans-serif;
-   font-optical-sizing: auto;
-    font-size: 14px;
-   font-weight: normal;
-   font-style: normal;
-}
-
 a {
     text-decoration: none;
+}
+
+li {
+    list-style-type: none;
 }
 
 
@@ -67,54 +71,64 @@ a {
     margin: 0;
     padding: 0 20px;
     width: 100vw;
-    height: fit-content;
+    height: 300px;
     background-color: pink;
 }
 
 .category__button:hover ~.category__box,
-.category__box:hover{
+.category__box:hover {
     display: flex;
     flex-direction: column;
     position: absolute;
     z-index: 5555;
 }
 
-.category__women {
+div[class^="category__div"] {
     position: relative;
     left: 100px;
-    bottom: 50px;
-    display: flex;
+    bottom: 31px;
+}
+
+.category__div-women {
+    display: block;
     width: 100%;
-    height: 100%;
+    height: fit-content;
     background-color: goldenrod;
 }
 
-.gender-cate {
+.category__a-gender--men {
+    position: absolute;
+    top: 40px;
+}
+
+.category__div-men {
+    display: none;
+    z-index: 888888;
+    background-color: deepskyblue;
+}
+
+a[class^="category__a-gender"] {
     z-index: 999999;
-    position: relative;
     width: 100px;
     height: 30px;
     padding: 5px 0 0 0;
     font-size: 16px;
     font-weight: bold;
-
     text-align: left;
 }
 
-.gender-cate span {
-    margin-left: 50px;
+a[class^="category__a-gender"] span {
     display: none;
-}
-
-.gender-cate:hover > span {
-    display:inline-block;
-    color: #333333;
+    margin-left: 50px;
     font-size: 12px;
+    color: #333333;
 }
 
+a[class^="category__a-gender"]:hover > span { /* 마우스오버시 화살표 노출 */
+    display:inline-block;
+}
 
-
-.gender-cate ~ div {
+a[class^="category__a-gender"] ~ div { /* "category__a-gender"로 시작하는 a를 뒤따르는 모든 div */
     width: 100vw;
     height: 300px;
 }
@@ -122,47 +136,17 @@ a {
 .category li{
     width: auto;
     height: auto;
-    list-style-type: none;
 }
 
-.category__depth01 {
+ul[class^="category__ul-depth01"] {
     margin: 0;
     padding: 0;
 }
 
-
-.category__depth01 > li {
+ul[class^="category__ul-depth01"] > li { /* 해당 ul 요소 바로 아래에 위치하는 모든 li요소 */
     float: left;
     background-color: blueviolet;
 }
-
-.category__men {
-    display: none;
-    position: relative;
-    left: 100px;
-    bottom: 401px;
-    z-index: 888888;
-    background-color: deepskyblue;
-}
-
-.category__box a:hover + div { /* 카테고리 박스 a(여성/남성) 마우스오버시 인접한 div 노출 */
-    display: block;
-    z-index: 888888;
-}
-
-.gender-cate--men {
-    position: relative;
-    bottom: 300px;
-}
-
-/*
-
-.gender-cate--men:hover ~ #category__women {
-    display: none;
-}
-*/
-
-
 
 
 
