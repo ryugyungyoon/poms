@@ -11,8 +11,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+<script type="text/javascript">
+$(function (){
+    //***카테고리 관련 마우스오버 이벤트***
+    //남성, 여성 a 마우스오버 이벤트
+    $('a[class^="category__a-gender"]').hover(function() { //마우스오버시
+        let classNm = $(this).attr('class');
+        $('.'+classNm +'+div').css('display', 'block');
+    }, function() { //마우스아웃시
+        let classNm = $(this).attr('class');
+        $('.'+classNm+'+div').css('display', 'none');
+    });
+
+    //남성, 여성 카테고리 목록 마우스오버 이벤트
+    $('div[class^="category__div"]').hover(function() { //마우스오버시
+        let classNm = $(this).attr('class');
+        $('.'+classNm).css('display', 'block');
+    }, function() { //마우스아웃시
+        let classNm = $(this).attr('class');
+        $('.'+classNm).css('display', 'none');
+    });
+})
+</script>
 <body>
     <div class="gird-container">
         <div class="grid-banner"></div>
@@ -25,9 +47,9 @@
             <div class="category">
                 <a class="category__button" style="background-color: #007bff; width: 100%; height: 100%;">카테고리</a>
                 <div class="category__box">
-                    <a href="#" class="gender-cate">여성<span>▶</span></a>
-                    <div class="category__women" id="category__women">
-                        <ul class="category__depth01">
+                    <a href="#" class="category__a-gender--women">여성<span>▶</span></a>
+                    <div class="category__div-women">
+                        <ul class="category__ul-depth01--women">
                             <li>
                                 <a href="#">의류</a>
                                 <ul>
@@ -65,9 +87,9 @@
                         </ul>
                     </div>
 
-                    <a href="#" class="gender-cate gender-cate--men">남성<span>▶</span></a>
-                    <div class="category__men">
-                        <ul class="category__depth01">
+                    <a href="#" class="category__a-gender--men">남성<span>▶</span></a>
+                    <div class="category__div-men">
+                        <ul class="category__ul-depth01--men">
                             <li>
                                 <a href="#">의류</a>
                                 <ul>
