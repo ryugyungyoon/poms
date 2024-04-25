@@ -11,155 +11,167 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <script type="text/javascript">
-$(function (){
-    //***카테고리 관련 마우스오버 이벤트***
-    //남성, 여성 a 마우스오버 이벤트
-    $('a[class^="category__a-gender"]').hover(function() { //마우스오버시
-        let classNm = $(this).attr('class');
-        $('.'+classNm +'+div').css('display', 'block');
-    }, function() { //마우스아웃시
-        let classNm = $(this).attr('class');
-        $('.'+classNm+'+div').css('display', 'none');
-    });
+    $(function () {
+        //***카테고리 관련 마우스오버 이벤트***
+        //카테고리 a 마우스 오버시 디폴트 카테고리 - 여성
+        $('.category__button').mouseover(function () {
+            $('.category__div-women').css('display', 'block');
+            $('.defalut-arrow').css('display', 'inline-block');
+        });
 
-    //남성, 여성 카테고리 목록 마우스오버 이벤트
-    $('div[class^="category__div"]').hover(function() { //마우스오버시
-        let classNm = $(this).attr('class');
-        $('.'+classNm).css('display', 'block');
-    }, function() { //마우스아웃시
-        let classNm = $(this).attr('class');
-        $('.'+classNm).css('display', 'none');
-    });
-})
+        //남성, 여성 a 마우스오버시 해당 카테고리 div 노출
+        $('a[class^="category__a-gender"]').hover(function () { //마우스오버시
+            let classNm = $(this).attr('class');
+            $('.' + classNm + '+div').css('display', 'block');
+
+            //여성 a 옆 화살표 출력 여부
+            (classNm === 'category__a-gender--women') ? $('.defalut-arrow').css('display', 'inline-block') : $('.defalut-arrow').css('display', 'none');
+        }, function () { //마우스아웃시
+            let classNm = $(this).attr('class');
+            $('.' + classNm + '+div').css('display', 'none');
+        });
+
+        //남성, 여성 카테고리 div 마우스오버시 자기 자신 노출
+        $('div[class^="category__div"]').hover(function () { //마우스오버시
+            let classNm = $(this).attr('class');
+            $('.' + classNm).css('display', 'block');
+        }, function () { //마우스아웃시
+            let classNm = $(this).attr('class');
+            $('.' + classNm).css('display', 'none');
+        });
+
+    })
 </script>
 <body>
-    <div class="gird-container">
-        <div class="grid-banner"></div>
-        <div class="grid-header">
-            <input id="searchInpHeader" type="search" autocomplete="on" placeholder="" maxlength="80" value="">
-        </div>
+<div class="gird-container">
+    <div class="grid-banner"></div>
+    <div class="grid-header">
+        <input id="searchInpHeader" type="search" autocomplete="on" placeholder="" maxlength="80" value="">
+    </div>
 
-        <!--카테고리, 마이페이지, 고객센터, 검색창-->
-        <div class="grid-menu">
-            <div class="category">
-                <a class="category__button" style="background-color: #007bff; width: 100%; height: 100%;">카테고리</a>
-                <div class="category__box">
-                    <a href="#" class="category__a-gender--women">여성<span>▶</span></a>
-                    <div class="category__div-women">
-                        <ul class="category__ul-depth01--women">
-                            <li>
-                                <a href="#">의류</a>
-                                <ul>
-                                    <li>아우터</li>
-                                    <li>원피스</li>
-                                    <li>셔츠</li>
-                                    <li>티셔츠</li>
-                                    <li>니트</li>
-                                    <li>스커트</li>
-                                    <li>팬츠</li>
-                                    <li>데님</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">가방</a>
-                                <ul>
-                                    <li>숄더백</li>
-                                    <li>에코백</li>
-                                    <li>크로스백</li>
-                                    <li>클러치</li>
-                                    <li>백팩</li>
-                                    <li>지갑</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">신발</a>
-                                <ul>
-                                    <li>스니커즈</li>
-                                    <li>구두</li>
-                                    <li>샌들</li>
-                                    <li>슬리퍼</li>
-                                    <li>부츠</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+    <!--카테고리, 마이페이지, 고객센터, 검색창-->
+    <div class="grid-menu">
+        <div class="category">
+            <a class="category__button">CATEGORY<span></span></a>
+            <div class="category__box">
+                <a href="#" class="category__a-gender--women">여성<span class="defalut-arrow">▶</span></a>
+                <div class="category__div-women">
+                    <ul class="category__ul-depth01--women">
+                        <li>
+                            <a href="#">의류</a>
+                            <ul>
+                                <li>아우터</li>
+                                <li>원피스</li>
+                                <li>셔츠</li>
+                                <li>티셔츠</li>
+                                <li>니트</li>
+                                <li>스커트</li>
+                                <li>팬츠</li>
+                                <li>데님</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">가방</a>
+                            <ul>
+                                <li>숄더백</li>
+                                <li>에코백</li>
+                                <li>크로스백</li>
+                                <li>클러치</li>
+                                <li>백팩</li>
+                                <li>지갑</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">신발</a>
+                            <ul>
+                                <li>스니커즈</li>
+                                <li>구두</li>
+                                <li>샌들</li>
+                                <li>슬리퍼</li>
+                                <li>부츠</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
-                    <a href="#" class="category__a-gender--men">남성<span>▶</span></a>
-                    <div class="category__div-men">
-                        <ul class="category__ul-depth01--men">
-                            <li>
-                                <a href="#">의류</a>
-                                <ul>
-                                    <li>아우터</li>
-                                    <li>셔츠</li>
-                                    <li>티셔츠</li>
-                                    <li>니트</li>
-                                    <li>팬츠</li>
-                                    <li>데님</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">가방</a>
-                                <ul>
-                                    <li>숄더백</li>
-                                    <li>에코백</li>
-                                    <li>크로스백</li>
-                                    <li>클러치</li>
-                                    <li>백팩</li>
-                                    <li>지갑</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">신발</a>
-                                <ul>
-                                    <li>스니커즈</li>
-                                    <li>구두</li>
-                                    <li>샌들</li>
-                                    <li>슬리퍼</li>
-                                    <li>부츠</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <a href="#" class="category__a-gender--men">남성<span>▶</span></a>
+                <div class="category__div-men">
+                    <ul class="category__ul-depth01--men">
+                        <li>
+                            <a href="#">의류</a>
+                            <ul>
+                                <li>아우터</li>
+                                <li>셔츠</li>
+                                <li>티셔츠</li>
+                                <li>니트</li>
+                                <li>팬츠</li>
+                                <li>데님</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">가방</a>
+                            <ul>
+                                <li>숄더백</li>
+                                <li>에코백</li>
+                                <li>크로스백</li>
+                                <li>클러치</li>
+                                <li>백팩</li>
+                                <li>지갑</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">신발</a>
+                            <ul>
+                                <li>스니커즈</li>
+                                <li>구두</li>
+                                <li>샌들</li>
+                                <li>슬리퍼</li>
+                                <li>부츠</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-
-            <ul>
-                <li>WOMEN</li>
-                <li>MEN</li>
-            </ul>
-            |
-            <ul>
-                <li>BEST</li>
-                <li>SALE</li>
-                <li>NEW</li>
-            </ul>
         </div>
 
-        <div class="grid-sidebar-a">
 
-        </div>
-        <div class="grid-main">
-            <h2>로그인</h2>
-            <form action="/login" method="post">
-                <label for="id">아이디:</label>
-                <input type="text" id="id" name="id">
-                <label for="pw">비밀번호:</label>
-                <input type="password" id="pw" name="pw">
-                <button type="submit">로그인</button>
-            </form>
-            <a href="/find-id">아이디 찾기</a>
-            /
-            <a href="/find-password">비밀번호 찾기</a>
-        </div>
-        <div class="grid-sidebar-b"></div>
+        <ul>
+            <li>WOMEN</li>
+            <li>MEN</li>
+        </ul>
+        |
+        <ul>
+            <li>BEST</li>
+            <li>SALE</li>
+            <li>NEW</li>
+        </ul>
+    </div>
 
-        <div class="grid-footer"></div>
+    <div class="grid-sidebar-a">
 
     </div>
+    <div class="grid-main">
+        <h2>로그인</h2>
+        <form action="/login" method="post">
+            <label for="id">아이디:</label>
+            <input type="text" id="id" name="id">
+            <label for="pw">비밀번호:</label>
+            <input type="password" id="pw" name="pw">
+            <button type="submit">로그인</button>
+        </form>
+        <a href="/find-id">아이디 찾기</a>
+        /
+        <a href="/find-password">비밀번호 찾기</a>
+    </div>
+    <div class="grid-sidebar-b"></div>
+
+    <div class="grid-footer"></div>
+
+</div>
 </body>
 </html>
