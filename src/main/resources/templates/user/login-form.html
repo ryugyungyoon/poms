@@ -48,130 +48,140 @@
     })
 </script>
 <body>
-<div class="gird-container">
-    <div class="grid-banner"></div>
-    <div class="grid-header">
-        <input type="search" name="searchWord" autocomplete="on" placeholder="검색어를 입력하세요." maxlength="255">
-    </div>
+    <div class="gird-container">
+        <div class="grid-banner"></div>
 
-    <!--카테고리, 마이페이지, 고객센터, 검색창-->
-    <div class="grid-menu">
-        <div class="category">
-            <a class="category__button">CATEGORY<span></span></a>
-            <div class="category__box">
-                <a href="#" class="category__a-gender--women">여성<span class="defalut-arrow">▶</span></a>
-                <div class="category__div-women">
-                    <ul class="category__ul-depth01--women">
-                        <li>
-                            <a href="#">의류</a>
-                            <ul>
-                                <li>아우터</li>
-                                <li>원피스</li>
-                                <li>셔츠</li>
-                                <li>티셔츠</li>
-                                <li>니트</li>
-                                <li>스커트</li>
-                                <li>팬츠</li>
-                                <li>데님</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">가방</a>
-                            <ul>
-                                <li>숄더백</li>
-                                <li>에코백</li>
-                                <li>크로스백</li>
-                                <li>클러치</li>
-                                <li>백팩</li>
-                                <li>지갑</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">신발</a>
-                            <ul>
-                                <li>스니커즈</li>
-                                <li>구두</li>
-                                <li>샌들</li>
-                                <li>슬리퍼</li>
-                                <li>부츠</li>
-                            </ul>
-                        </li>
-                    </ul>
+        <div class="grid-header">
+            <div class="header-div__01">
+                <div class="poms-logo-div">
+                    POMS
                 </div>
-
-                <a href="#" class="category__a-gender--men">남성<span>▶</span></a>
-                <div class="category__div-men">
-                    <ul class="category__ul-depth01--men">
-                        <li>
-                            <a href="#">의류</a>
-                            <ul>
-                                <li>아우터</li>
-                                <li>셔츠</li>
-                                <li>티셔츠</li>
-                                <li>니트</li>
-                                <li>팬츠</li>
-                                <li>데님</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">가방</a>
-                            <ul>
-                                <li>숄더백</li>
-                                <li>에코백</li>
-                                <li>크로스백</li>
-                                <li>클러치</li>
-                                <li>백팩</li>
-                                <li>지갑</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">신발</a>
-                            <ul>
-                                <li>스니커즈</li>
-                                <li>구두</li>
-                                <li>샌들</li>
-                                <li>슬리퍼</li>
-                                <li>부츠</li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="user-bar-div">
+                    사용자 바
                 </div>
+            </div>
+            <div class="header-div__02">
+                <input type="search" class="search-input" name="searchWord" autocomplete="on" placeholder="검색어를 입력하세요." maxlength="255">
+                <span class="search-button"></span>
             </div>
         </div>
 
+        <!--카테고리, 퀵 메뉴-->
+        <div class="grid-menu">
+            <div class="category">
+                <a class="category__button">CATEGORY<span></span></a>
+                <div class="category__box">
+                    <a href="#" class="category__a-gender--women">여성<span class="defalut-arrow">▶</span></a>
+                    <div class="category__div-women">
+                        <ul class="category__ul-depth01--women">
+                            <li>
+                                <a href="#">의류</a>
+                                <ul>
+                                    <li>아우터</li>
+                                    <li>원피스</li>
+                                    <li>셔츠</li>
+                                    <li>티셔츠</li>
+                                    <li>니트</li>
+                                    <li>스커트</li>
+                                    <li>팬츠</li>
+                                    <li>데님</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">가방</a>
+                                <ul>
+                                    <li>숄더백</li>
+                                    <li>에코백</li>
+                                    <li>크로스백</li>
+                                    <li>클러치</li>
+                                    <li>백팩</li>
+                                    <li>지갑</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">신발</a>
+                                <ul>
+                                    <li>스니커즈</li>
+                                    <li>구두</li>
+                                    <li>샌들</li>
+                                    <li>슬리퍼</li>
+                                    <li>부츠</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
 
-        <ul>
-            <li>WOMEN</li>
-            <li>MEN</li>
-        </ul>
-        |
-        <ul>
-            <li>BEST</li>
-            <li>SALE</li>
-            <li>NEW</li>
-        </ul>
+                    <a href="#" class="category__a-gender--men">남성<span>▶</span></a>
+                    <div class="category__div-men">
+                        <ul class="category__ul-depth01--men">
+                            <li>
+                                <a href="#">의류</a>
+                                <ul>
+                                    <li>아우터</li>
+                                    <li>셔츠</li>
+                                    <li>티셔츠</li>
+                                    <li>니트</li>
+                                    <li>팬츠</li>
+                                    <li>데님</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">가방</a>
+                                <ul>
+                                    <li>숄더백</li>
+                                    <li>에코백</li>
+                                    <li>크로스백</li>
+                                    <li>클러치</li>
+                                    <li>백팩</li>
+                                    <li>지갑</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">신발</a>
+                                <ul>
+                                    <li>스니커즈</li>
+                                    <li>구두</li>
+                                    <li>샌들</li>
+                                    <li>슬리퍼</li>
+                                    <li>부츠</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-menu-div">
+                    <ul class="quick-menu-ul">
+                        <li>WOMEN</li>
+                        <li>MEN</li>
+                        <li>|</li>
+                        <li>BEST</li>
+                        <li>SALE</li>
+                        <li>NEW</li>
+                    </ul>
+            </div>
+        </div>
+
+        <div class="grid-sidebar-a">
+
+        </div>
+        <div class="grid-main">
+            <h2>로그인</h2>
+            <form action="/login" method="post">
+                <label for="id">아이디:</label>
+                <input type="text" id="id" name="id">
+                <label for="pw">비밀번호:</label>
+                <input type="password" id="pw" name="pw">
+                <button type="submit">로그인</button>
+            </form>
+            <a href="/find-id">아이디 찾기</a>
+            /
+            <a href="/find-password">비밀번호 찾기</a>
+        </div>
+        <div class="grid-sidebar-b"></div>
+
+        <div class="grid-footer"></div>
+
     </div>
-
-    <div class="grid-sidebar-a">
-
-    </div>
-    <div class="grid-main">
-        <h2>로그인</h2>
-        <form action="/login" method="post">
-            <label for="id">아이디:</label>
-            <input type="text" id="id" name="id">
-            <label for="pw">비밀번호:</label>
-            <input type="password" id="pw" name="pw">
-            <button type="submit">로그인</button>
-        </form>
-        <a href="/find-id">아이디 찾기</a>
-        /
-        <a href="/find-password">비밀번호 찾기</a>
-    </div>
-    <div class="grid-sidebar-b"></div>
-
-    <div class="grid-footer"></div>
-
-</div>
 </body>
 </html>
