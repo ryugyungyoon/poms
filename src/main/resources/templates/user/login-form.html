@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
@@ -11,43 +11,67 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <script type="text/javascript">
-$(function (){
-    //***카테고리 관련 마우스오버 이벤트***
-    //남성, 여성 a 마우스오버 이벤트
-    $('a[class^="category__a-gender"]').hover(function() { //마우스오버시
-        let classNm = $(this).attr('class');
-        $('.'+classNm +'+div').css('display', 'block');
-    }, function() { //마우스아웃시
-        let classNm = $(this).attr('class');
-        $('.'+classNm+'+div').css('display', 'none');
-    });
+    $(function () {
+        //***카테고리 관련 마우스오버 이벤트***
+        //카테고리 a 마우스 오버시 디폴트 카테고리 - 여성
+        $('.category__button').mouseover(function () {
+            $('.category__div-women').css('display', 'block');
+            $('.defalut-arrow').css('display', 'inline-block');
+        });
 
-    //남성, 여성 카테고리 목록 마우스오버 이벤트
-    $('div[class^="category__div"]').hover(function() { //마우스오버시
-        let classNm = $(this).attr('class');
-        $('.'+classNm).css('display', 'block');
-    }, function() { //마우스아웃시
-        let classNm = $(this).attr('class');
-        $('.'+classNm).css('display', 'none');
-    });
-})
+        //남성, 여성 a 마우스오버시 해당 카테고리 div 노출
+        $('a[class^="category__a-gender"]').hover(function () { //마우스오버시
+            let classNm = $(this).attr('class');
+            $('.' + classNm + '+div').css('display', 'block');
+
+            //여성 a 옆 화살표 출력 여부
+            (classNm === 'category__a-gender--women') ? $('.defalut-arrow').css('display', 'inline-block') : $('.defalut-arrow').css('display', 'none');
+        }, function () { //마우스아웃시
+            let classNm = $(this).attr('class');
+            $('.' + classNm + '+div').css('display', 'none');
+        });
+
+        //남성, 여성 카테고리 div 마우스오버시 자기 자신 노출
+        $('div[class^="category__div"]').hover(function () { //마우스오버시
+            let classNm = $(this).attr('class');
+            $('.' + classNm).css('display', 'block');
+        }, function () { //마우스아웃시
+            let classNm = $(this).attr('class');
+            $('.' + classNm).css('display', 'none');
+        });
+
+    })
 </script>
 <body>
     <div class="gird-container">
         <div class="grid-banner"></div>
+
         <div class="grid-header">
-            <input id="searchInpHeader" type="search" autocomplete="on" placeholder="" maxlength="80" value="">
+            <div class="header-div__01">
+                <div class="poms-logo-div">
+                    POMS
+                </div>
+                <div class="user-bar-div">
+                    사용자 바
+                </div>
+            </div>
+            <div class="header-div__02">
+                <input type="search" class="search-input" name="searchWord" autocomplete="on" placeholder="검색어를 입력하세요." maxlength="255">
+                <span class="search-button"></span>
+            </div>
         </div>
 
-        <!--카테고리, 마이페이지, 고객센터, 검색창-->
+        <!--카테고리, 퀵 메뉴-->
         <div class="grid-menu">
             <div class="category">
-                <a class="category__button" style="background-color: #007bff; width: 100%; height: 100%;">카테고리</a>
+                <a class="category__button">CATEGORY<span></span></a>
                 <div class="category__box">
-                    <a href="#" class="category__a-gender--women">여성<span>▶</span></a>
+                    <a href="#" class="category__a-gender--women">여성<span class="defalut-arrow">▶</span></a>
                     <div class="category__div-women">
                         <ul class="category__ul-depth01--women">
                             <li>
@@ -126,18 +150,16 @@ $(function (){
                     </div>
                 </div>
             </div>
-
-
-            <ul>
-                <li>WOMEN</li>
-                <li>MEN</li>
-            </ul>
-            |
-            <ul>
-                <li>BEST</li>
-                <li>SALE</li>
-                <li>NEW</li>
-            </ul>
+            <div class="quick-menu-div">
+                    <ul class="quick-menu-ul">
+                        <li>WOMEN</li>
+                        <li>MEN</li>
+                        <li>|</li>
+                        <li>BEST</li>
+                        <li>SALE</li>
+                        <li>NEW</li>
+                    </ul>
+            </div>
         </div>
 
         <div class="grid-sidebar-a">
