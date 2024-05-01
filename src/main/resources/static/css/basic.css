@@ -85,6 +85,7 @@ li {
     font-weight: 700;
     font-size: 36px;
     text-align: center;
+    z-index: 111111;
 }
 
 .header-div__02 {
@@ -102,6 +103,7 @@ li {
     padding: 0;
     border-width: 0 0 1px;
     border-color: #000;
+    z-index: 111113;
 }
 
 input::-webkit-search-decoration,
@@ -122,12 +124,45 @@ input:focus {outline: none;} /* 테두리 없애기 */
     position: relative;
     top: 10px;
     right: 35px;
+    z-index: 111114;
 }
 
 .user-bar-div {
     width: 256px;
     height: 90px;
-    background-color: coral;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 111112;
+}
+
+.user-bar-div ul li span {
+    display: block;
+}
+
+.user-bar-div ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-bar-div ul li {
+    width: 64px;
+    height: 70px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.join-icon {
+    position: relative;
+    left: 3px;
+}
+
+.user-bar-div ul li:hover > svg {
+    /*fill: #A0D9E2;*/
 }
 
 /*** 카테고리,퀵메뉴 (.grid-menu) css ***/
