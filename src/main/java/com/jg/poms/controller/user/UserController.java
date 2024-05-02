@@ -5,9 +5,7 @@ import com.jg.poms.dto.user.request.UserCreateRequest;
 import com.jg.poms.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Slf4j
@@ -38,5 +36,11 @@ public class UserController {
     @ResponseBody
     public User saveUser(UserCreateRequest request){
         return userService.saveUser(request);
+    }
+    @PostMapping("/certify")
+    @ResponseBody
+    public String certify(@RequestParam("contactNumber") String contactNumber){
+        log.debug(contactNumber);
+        return userService.certify(contactNumber);
     }
 }

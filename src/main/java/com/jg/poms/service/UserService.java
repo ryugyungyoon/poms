@@ -18,7 +18,12 @@ public class UserService {
     }
 
     @Transactional
-    public User saveUser(UserCreateRequest request){
+    public User saveUser(UserCreateRequest request) {
+
         return userRepository.save(new User(request));
+    }
+    @Transactional
+    public String certify(String contactNumber) {
+        return contactNumber;
     }
 }
