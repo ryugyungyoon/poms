@@ -4,7 +4,8 @@ server:
 
 spring:
   thymeleaf:
-    prefix: classpath:templates/
+    cache: false
+    prefix: classpath:/templates/
     suffix: .html
   datasource:
     #url: jdbc:mysql://121.162.18.38:3306/poms?characterEncoding=UTF-8&serverTimezone=UTC&allowMultiQueries=true&useCursorFetch=true&fetchSize=1000
