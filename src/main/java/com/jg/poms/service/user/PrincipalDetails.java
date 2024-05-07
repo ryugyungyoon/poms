@@ -1,7 +1,7 @@
 package com.jg.poms.service.user;
 
+import com.jg.poms.domain.user.User;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class PrincipalDetails implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> collections = new ArrayList<>();
 		collections.add(() -> {
-			return user.getRole().name();
+			return user.getRole().getName();
 		});
 
 		return collections;
@@ -29,13 +29,13 @@ public class PrincipalDetails implements UserDetails {
 	// get Password 메서드
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return user.getPw();
 	}
 
 	// get Username 메서드 (생성한 User은 loginId 사용)
 	@Override
 	public String getUsername() {
-		return user.getLoginId();
+		return user.getName();
 	}
 
 	// 계정이 만료 되었는지 (true: 만료X)

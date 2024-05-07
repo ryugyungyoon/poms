@@ -34,6 +34,9 @@ public class User {
     private LocalDateTime registrationDate;
     private LocalDateTime modifyDate;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     protected User(){}
 
     public User(UserCreateRequest request) {
@@ -105,5 +108,9 @@ public class User {
 
     public LocalDateTime getModifyDate() {
         return modifyDate;
+    }
+
+    public Role getRole() {
+        return role;
     }
 }
