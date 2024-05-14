@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class UserService {
@@ -25,5 +27,15 @@ public class UserService {
     @Transactional
     public String certify(String contactNumber) {
         return contactNumber;
+    }
+
+    @Transactional
+    public User getLoginUserById(String id){
+        if(id == null) return null;
+
+        Optional<User> optionalUser = userRepository.findById(id);
+        if(optionalUser.isEmpty()) return null;
+
+        return optionalUser.get();
     }
 }

@@ -4,8 +4,11 @@ import com.jg.poms.domain.user.User;
 import com.jg.poms.dto.user.request.UserCreateRequest;
 import com.jg.poms.dto.user.request.UserLoginRequest;
 import com.jg.poms.service.UserService;
+import com.jg.poms.service.user.PrincipalDetails;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -19,11 +22,15 @@ public class UserController {
         this.userService = userService;
     }
 
+
+
+
     @GetMapping("login-form")
     public String loginForm(){
         return "nonlogin/login-form";
     }
 
+    /*
     @PostMapping("login")
     @ResponseBody
     public String User(UserLoginRequest request){
@@ -31,6 +38,21 @@ public class UserController {
         System.out.println("로그인 아이디: "+ request.getId());
         return request.getId();
     }
+    */
+
+    @GetMapping("login")
+    public String User(Model model, PrincipalDetails principal){
+        log.debug("auth {}",principal);
+        if(principal != null){
+            User loginUser = userService.getLoginUserById(principal.getUsername());
+            if(loginUser != null){
+                model.addAttribute("name", loginUser.getName());
+            }
+        }
+        return "main";
+    }
+
+
     /**
      * [로그인 성공후 이동]
      *
@@ -41,6 +63,7 @@ public class UserController {
     public String loginSuccess(){
         return "redirect:/main";
     }
+
 
     /**
      * [로그인 실패후 이동]

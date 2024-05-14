@@ -23,7 +23,7 @@ $(function() {
     $('#loginBtn').click(function () {
         if (fn_valid()) {
             var loginData = $('#loginForm').serialize();
-            cfn_ajaxRequest('/user/login', 'POST', loginData);
+            cfn_ajaxRequest('/user/login', 'GET', loginData);
         }
     });
 });
