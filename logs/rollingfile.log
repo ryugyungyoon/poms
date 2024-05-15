@@ -1,1 +1,2 @@
 [WARN ] 2024-05-15 22:45:01.866 [http-nio-18080-exec-3][BCryptPasswordEncoder.java] BCryptPasswordEncoder - Encoded password does not look like BCrypt
+[WARN ] 2024-05-15 22:45:08.908 [http-nio-18080-exec-6][BCryptPasswordEncoder.java] BCryptPasswordEncoder - Encoded password does not look like BCrypt
