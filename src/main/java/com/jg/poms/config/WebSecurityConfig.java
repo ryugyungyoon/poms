@@ -7,11 +7,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
+@Configuration  //Spring Boot에서 이 클래스를 Configuration 파일로 인식
 @EnableWebSecurity //Spring Security 설정을 시작
 public class WebSecurityConfig {
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     //스프링 시큐리티 기능 비활성화
     @Bean
     public WebSecurityCustomizer configure() {
@@ -22,10 +29,35 @@ public class WebSecurityConfig {
     //특정 HTTP 요청에 대한 웹 기반 보안 구성
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/user/**").permitAll()
-                        .anyRequest().authenticated()
-                )
+        http
+                .authorizeHttpRequests((authz) -> authz
+                    //.requestMatchers() : 특정 경로에 특정 작업을 설정시 사용하는 메소드.
+                    // 이 메소드에 경로 입력 후 하위 메소드 이용하여 접근 수준을 설정한다.
+                    //.permitAll() : 모든 사용자에 대해 로그인하지 않아도 접근 허용
+                    //.hasRole() : 특정한 Role에게만 접근 허용
+                    //.hasAnyRole() : 인자에 적어준 여러 Role들에게 접근 허용
+                    //.authenticated() : 로그인만 하면 접근 허용
+                    //.denyAll() : 모든 사용자에 대해 로그인해도 접근 불가
+                    .requestMatchers("/", "/user/**", "/main").permitAll()
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
+                    //.anyRequest() : 위에서 처리하지 못한 나머지 경로에 대한 처리
+                    //.authenticated()나 .denyAll()로 설정하는 것이 일반적
+                    .anyRequest().authenticated()
+                    //위에서부터 아래의 순서로 적용되므로 가장 아래에서 모든 경로에 대한 설정을 진행해야 함
+                );
+        http
+                .formLogin((formLogin) ->
+                        //로그인 폼 페이지 설정 - 접근 불가 페이지 접근시 자동으로 해당 경로로 리다이렉션 진행
+                        formLogin.loginPage("/user/login-form")
+                                //로그인 폼에서 로그인 요청시 url 설정
+                                .loginProcessingUrl("/user/login")
+                                .permitAll()
+                                .defaultSuccessUrl("/")
+                );
+        http
+                //사이트 위변조 방지 csrf disable로 설정. default인 enable 설정시에는 post 요청시 csrf token 전달 필수(전달 안하면 로그인 진행 안됨)
+                .csrf(AbstractHttpConfigurer::disable);
+    /*
                 .formLogin((formLogin) ->
                         formLogin.loginPage("/user/login-form")
                                 .defaultSuccessUrl("/main")
@@ -34,7 +66,10 @@ public class WebSecurityConfig {
                         logout.logoutSuccessUrl("/user/login-form")
                                 .invalidateHttpSession(true)
                 )
-                .csrf(AbstractHttpConfigurer::disable)
-                .build();
+
+    */
+                //default는 enable, csrf disable로 미설정시 post 요청시 csrf token 전달 필수
+                //.csrf(AbstractHttpConfigurer::disable)
+        return http.build();
     }
 }

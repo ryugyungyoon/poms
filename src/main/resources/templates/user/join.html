@@ -185,10 +185,10 @@
 			else if(!fn_valid('contactNumber', true)){
 				return;
 			}
-			else{};
+			else{}
 
 			let userData = $('#signup-form').serialize();
-			cfn_ajaxRequest('/save-user', 'POST', userData);
+			cfn_ajaxRequest('/user/save-user', 'POST', userData);
 		});
 	})
 
@@ -291,6 +291,7 @@
 		else if(callbackId === 'save-user'){
 			console.log(resData);
 			alert('저장되었습니다.');
+			location.href = '/user/login-form';
 		}
 		else{}
 	}
