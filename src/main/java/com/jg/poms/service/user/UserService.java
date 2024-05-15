@@ -1,4 +1,4 @@
-package com.jg.poms.service;
+package com.jg.poms.service.user;
 
 import com.jg.poms.domain.user.User;
 import com.jg.poms.domain.user.UserRepository;
