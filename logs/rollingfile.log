@@ -1,2 +1,1 @@
-[INFO ] 2024-05-17 17:47:28.042 [http-nio-18080-exec-1][FrameworkServlet.java] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-[INFO ] 2024-05-17 17:47:28.053 [http-nio-18080-exec-1][FrameworkServlet.java] DispatcherServlet - Completed initialization in 2 ms
+[INFO ] 2024-05-17 17:59:27.879 [SpringApplicationShutdownHook][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

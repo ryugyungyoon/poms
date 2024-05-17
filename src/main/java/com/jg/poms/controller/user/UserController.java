@@ -1,12 +1,10 @@
 package com.jg.poms.controller.user;
 
 import com.jg.poms.domain.user.User;
-import com.jg.poms.dto.user.CustomUserDetails;
 import com.jg.poms.dto.user.request.UserCreateRequest;
-import com.jg.poms.service.UserService;
+import com.jg.poms.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
