@@ -23,7 +23,8 @@ public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring()
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+                .requestMatchers("/images/**", "/js/**", "/css/**", "/font/**", "/error");
+                //.requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
     //특정 HTTP 요청에 대한 웹 기반 보안 구성
@@ -38,7 +39,7 @@ public class WebSecurityConfig {
                     //.hasAnyRole() : 인자에 적어준 여러 Role들에게 접근 허용
                     //.authenticated() : 로그인만 하면 접근 허용
                     //.denyAll() : 모든 사용자에 대해 로그인해도 접근 불가
-                    .requestMatchers("/", "/user/**", "/main").permitAll()
+                    .requestMatchers("/", "/user/login-form").permitAll()
                     .requestMatchers("/admin/**").hasRole("ADMIN")
                     //.anyRequest() : 위에서 처리하지 못한 나머지 경로에 대한 처리
                     //.authenticated()나 .denyAll()로 설정하는 것이 일반적
@@ -50,9 +51,18 @@ public class WebSecurityConfig {
                         //로그인 폼 페이지 설정 - 접근 불가 페이지 접근시 자동으로 해당 경로로 리다이렉션 진행
                         formLogin.loginPage("/user/login-form")
                                 //로그인 폼에서 로그인 요청시 url 설정
+                                //이 url 요청 시 스프링 시큐리티가 가로채서 UserDetailsService의 loadUserByUsername 메서드로 연결
                                 .loginProcessingUrl("/user/login")
+                                //로그인 성공시 url
+                                .defaultSuccessUrl("/", true)
+                                //로그인 실패시 url
+                                .failureUrl("/user/login-form")
+                                //아이디 파라미터명 설정
+                                .usernameParameter("id")
+                                //패스워드 파라미터명 설정
+                                .passwordParameter("pw")
                                 .permitAll()
-                                .defaultSuccessUrl("/")
+
                 );
         http
                 //사이트 위변조 방지 csrf disable로 설정. default인 enable 설정시에는 post 요청시 csrf token 전달 필수(전달 안하면 로그인 진행 안됨)
