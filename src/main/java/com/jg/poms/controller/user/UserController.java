@@ -59,12 +59,11 @@ public class UserController {
      * @author zisooya
      * @return String
      */
-    /*
     @GetMapping("login-success")
     public String loginSuccess(){
+        log.debug("로그인 성공 후 들어옴");
         return "redirect:/main";
     }
-*/
 
     /**
      * [로그인 실패후 이동]

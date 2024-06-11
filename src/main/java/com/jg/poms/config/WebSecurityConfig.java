@@ -1,6 +1,6 @@
 package com.jg.poms.config;
 
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import com.jg.poms.handler.LoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -57,6 +57,8 @@ public class WebSecurityConfig {
                                 .defaultSuccessUrl("/", true)
                                 //로그인 실패시 url
                                 .failureUrl("/user/login-form")
+                                //로그인 성공시 handler
+                                .successHandler(new LoginSuccessHandler())
                                 //아이디 파라미터명 설정
                                 .usernameParameter("id")
                                 //패스워드 파라미터명 설정
