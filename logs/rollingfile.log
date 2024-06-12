@@ -1,5 +1,1 @@
-[INFO ] 2024-05-15 22:05:14.563 [File Watcher][LocalDevToolsAutoConfiguration.java] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
-[INFO ] 2024-05-15 22:05:14.630 [Thread-11][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2024-05-15 22:05:14.794 [restartedMain][StartupInfoLogger.java] PomsApplication - Starting PomsApplication using Java 17.0.10 with PID 31200 (C:\Project\poms\build\classes\java\main started by user in C:\Project\poms)
-[DEBUG] 2024-05-15 22:05:14.798 [restartedMain][StartupInfoLogger.java] PomsApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
-[INFO ] 2024-05-15 22:05:14.798 [restartedMain][SpringApplication.java] PomsApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2024-05-17 23:19:02.548 [SpringApplicationShutdownHook][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
