@@ -19,7 +19,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
 		log.debug("성공 핸들러에 들어옴");
-		response.sendRedirect("/user/login-success");
 	}
 
 }

@@ -39,10 +39,11 @@ public class WebSecurityConfig {
                     //.hasAnyRole() : 인자에 적어준 여러 Role들에게 접근 허용
                     //.authenticated() : 로그인만 하면 접근 허용
                     //.denyAll() : 모든 사용자에 대해 로그인해도 접근 불가
-                    .requestMatchers("/", "/user/login-form").permitAll()
+                    .requestMatchers("/**", "/user/login-form").permitAll()
                     .requestMatchers("/admin/**").hasRole("ADMIN")
                     //.anyRequest() : 위에서 처리하지 못한 나머지 경로에 대한 처리
                     //.authenticated()나 .denyAll()로 설정하는 것이 일반적
+
                     .anyRequest().authenticated()
                     //위에서부터 아래의 순서로 적용되므로 가장 아래에서 모든 경로에 대한 설정을 진행해야 함
                 );
@@ -58,7 +59,7 @@ public class WebSecurityConfig {
                                 //로그인 실패시 url
                                 .failureUrl("/user/login-form")
                                 //로그인 성공시 handler
-                                .successHandler(new LoginSuccessHandler())
+                                //.successHandler(new LoginSuccessHandler())
                                 //아이디 파라미터명 설정
                                 .usernameParameter("id")
                                 //패스워드 파라미터명 설정
