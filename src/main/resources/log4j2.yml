@@ -5,7 +5,7 @@ Configutation:
   Properties:
     Property:
       - name: "log-path"
-        value: "./logs"
+        value: "C://poms/logs"
       - name: "pattern"
         value: "%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"
       - name: "charset-UTF-8"
@@ -22,15 +22,15 @@ Configutation:
     RollingFile:
       name: RollingFile_Appender
       fileName: ${log-path}/rollingfile.log
-      filePattern: "logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"
+      filePattern: "C://poms/logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"
       PatternLayout:
         charset: ${charset-UTF-8}
         pattern: ${pattern}
       Policies:
         SizeBasedTriggeringPolicy:
-          size: "200KB"
+          size: "10MB"
         TimeBasedTriggeringPolicy:
-          interval: "1"
+          interval: "24"
       DefaultRollOverStrategy:
         max: "30"
         fileIndex: "max"
