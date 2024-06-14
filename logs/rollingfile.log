@@ -1,58 +1,29 @@
-[INFO ] 2024-06-12 14:59:12.766 [File Watcher][LocalDevToolsAutoConfiguration.java] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
-[INFO ] 2024-06-12 14:59:12.795 [Thread-26][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2024-06-12 14:59:12.927 [restartedMain][StartupInfoLogger.java] PomsApplication - Starting PomsApplication using Java 17.0.10 with PID 27752 (C:\Project\poms\build\classes\java\main started by user in C:\Project\poms)
-[DEBUG] 2024-06-12 14:59:12.929 [restartedMain][StartupInfoLogger.java] PomsApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
-[INFO ] 2024-06-12 14:59:12.930 [restartedMain][SpringApplication.java] PomsApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2024-06-12 14:59:13.363 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2024-06-12 14:59:13.387 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 1 JPA repository interface.
-[INFO ] 2024-06-12 14:59:13.528 [restartedMain][TomcatWebServer.java] TomcatWebServer - Tomcat initialized with port 18080 (http)
-[INFO ] 2024-06-12 14:59:13.573 [restartedMain][ServletWebServerApplicationContext.java] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 641 ms
-[INFO ] 2024-06-12 14:59:13.638 [restartedMain][SpringPersistenceUnitInfo.java] SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-[INFO ] 2024-06-12 14:59:13.703 [restartedMain][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[WARN ] 2024-06-12 14:59:13.778 [restartedMain][AbstractApplicationContext.java] AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController' defined in file [C:\Project\poms\build\classes\java\main\com\jg\poms\controller\user\UserController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userService': Unsatisfied dependency expressed through field 'bCryptPasswordEncoder': No qualifying bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-[INFO ] 2024-06-12 14:59:13.778 [restartedMain][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-[INFO ] 2024-06-12 14:59:13.800 [restartedMain][ConditionEvaluationReportLogger.java] ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-[ERROR] 2024-06-12 14:59:13.811 [restartedMain][LoggingFailureAnalysisReporter.java] LoggingFailureAnalysisReporter - 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Field bCryptPasswordEncoder in com.jg.poms.service.user.UserService required a bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' that could not be found.
-
-
-Action:
-
-Consider defining a bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' in your configuration.
-
-[INFO ] 2024-06-12 14:59:15.387 [restartedMain][StartupInfoLogger.java] PomsApplication - Starting PomsApplication using Java 17.0.10 with PID 27752 (C:\Project\poms\build\classes\java\main started by user in C:\Project\poms)
-[DEBUG] 2024-06-12 14:59:15.388 [restartedMain][StartupInfoLogger.java] PomsApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
-[INFO ] 2024-06-12 14:59:15.388 [restartedMain][SpringApplication.java] PomsApplication - No active profile set, falling back to 1 default profile: "default"
-[INFO ] 2024-06-12 14:59:15.697 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-[INFO ] 2024-06-12 14:59:15.711 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
-[INFO ] 2024-06-12 14:59:15.823 [restartedMain][TomcatWebServer.java] TomcatWebServer - Tomcat initialized with port 18080 (http)
-[INFO ] 2024-06-12 14:59:15.861 [restartedMain][ServletWebServerApplicationContext.java] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 471 ms
-[INFO ] 2024-06-12 14:59:15.909 [restartedMain][SpringPersistenceUnitInfo.java] SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-[INFO ] 2024-06-12 14:59:15.967 [restartedMain][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-[WARN ] 2024-06-12 14:59:16.055 [restartedMain][JpaBaseConfiguration.java] JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-[INFO ] 2024-06-12 14:59:16.125 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5e8545e8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@758cf936, org.springframework.security.web.context.SecurityContextHolderFilter@308280db, org.springframework.security.web.header.HeaderWriterFilter@7ae33793, org.springframework.web.filter.CorsFilter@5bc7936f, org.springframework.security.web.authentication.logout.LogoutFilter@6dedc6cd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5ddd2b30, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@529cd16a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2a71e615, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f77b78c, org.springframework.security.web.access.ExceptionTranslationFilter@50550804, org.springframework.security.web.access.intercept.AuthorizationFilter@7c2a49e9]
-[WARN ] 2024-06-12 14:59:16.128 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
-[INFO ] 2024-06-12 14:59:16.128 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/images/**']
-[WARN ] 2024-06-12 14:59:16.128 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
-[INFO ] 2024-06-12 14:59:16.128 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/js/**']
-[WARN ] 2024-06-12 14:59:16.128 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
-[INFO ] 2024-06-12 14:59:16.129 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/css/**']
-[WARN ] 2024-06-12 14:59:16.129 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/font/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
-[INFO ] 2024-06-12 14:59:16.129 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/font/**']
-[WARN ] 2024-06-12 14:59:16.129 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/error']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
-[INFO ] 2024-06-12 14:59:16.129 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/error']
-[INFO ] 2024-06-12 14:59:16.176 [restartedMain][OptionalLiveReloadServer.java] OptionalLiveReloadServer - LiveReload server is running on port 35729
-[INFO ] 2024-06-12 14:59:16.190 [restartedMain][TomcatWebServer.java] TomcatWebServer - Tomcat started on port 18080 (http) with context path ''
-[INFO ] 2024-06-12 14:59:16.195 [restartedMain][StartupInfoLogger.java] PomsApplication - Started PomsApplication in 0.868 seconds (process running for 733.684)
-[INFO ] 2024-06-12 14:59:16.196 [restartedMain][ConditionEvaluationDeltaLoggingListener.java] ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
-[INFO ] 2024-06-12 14:59:16.386 [http-nio-18080-exec-1][FrameworkServlet.java] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-[INFO ] 2024-06-12 14:59:16.388 [http-nio-18080-exec-1][FrameworkServlet.java] DispatcherServlet - Completed initialization in 1 ms
+[INFO ] 2024-06-14 02:28:10.187 [File Watcher][LocalDevToolsAutoConfiguration.java] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 28 class path changes (0 additions, 0 deletions, 28 modifications)
+[INFO ] 2024-06-14 02:28:10.261 [Thread-141][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2024-06-14 02:28:10.503 [restartedMain][StartupInfoLogger.java] PomsApplication - Starting PomsApplication using Java 17.0.10 with PID 27752 (C:\Project\poms\build\classes\java\main started by user in C:\Project\poms)
+[DEBUG] 2024-06-14 02:28:10.505 [restartedMain][StartupInfoLogger.java] PomsApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+[INFO ] 2024-06-14 02:28:10.506 [restartedMain][SpringApplication.java] PomsApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2024-06-14 02:28:11.942 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2024-06-14 02:28:11.969 [restartedMain][RepositoryConfigurationDelegate.java] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interface.
+[INFO ] 2024-06-14 02:28:12.186 [restartedMain][TomcatWebServer.java] TomcatWebServer - Tomcat initialized with port 18080 (http)
+[INFO ] 2024-06-14 02:28:12.271 [restartedMain][ServletWebServerApplicationContext.java] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1761 ms
+[INFO ] 2024-06-14 02:28:12.368 [restartedMain][SpringPersistenceUnitInfo.java] SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+[INFO ] 2024-06-14 02:28:12.455 [restartedMain][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN ] 2024-06-14 02:28:12.620 [restartedMain][JpaBaseConfiguration.java] JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[INFO ] 2024-06-14 02:28:12.792 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6a1451f0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a1320f3, org.springframework.security.web.context.SecurityContextHolderFilter@5cb3c7b8, org.springframework.security.web.header.HeaderWriterFilter@bd9c899, org.springframework.web.filter.CorsFilter@6c7001a8, org.springframework.security.web.authentication.logout.LogoutFilter@5abe94cc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@44a2a55c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a90bf7e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5daa9841, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3d29c13f, org.springframework.security.web.access.ExceptionTranslationFilter@60b4f934, org.springframework.security.web.access.intercept.AuthorizationFilter@4c2b5bd2]
+[WARN ] 2024-06-14 02:28:12.799 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/images/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[INFO ] 2024-06-14 02:28:12.799 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/images/**']
+[WARN ] 2024-06-14 02:28:12.799 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[INFO ] 2024-06-14 02:28:12.800 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/js/**']
+[WARN ] 2024-06-14 02:28:12.800 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[INFO ] 2024-06-14 02:28:12.800 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/css/**']
+[WARN ] 2024-06-14 02:28:12.800 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/font/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[INFO ] 2024-06-14 02:28:12.801 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/font/**']
+[WARN ] 2024-06-14 02:28:12.801 [restartedMain][WebSecurity.java] WebSecurity - You are asking Spring Security to ignore Mvc [pattern='/error']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[INFO ] 2024-06-14 02:28:12.801 [restartedMain][DefaultSecurityFilterChain.java] DefaultSecurityFilterChain - Will not secure Mvc [pattern='/error']
+[INFO ] 2024-06-14 02:28:12.947 [restartedMain][OptionalLiveReloadServer.java] OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2024-06-14 02:28:12.975 [restartedMain][TomcatWebServer.java] TomcatWebServer - Tomcat started on port 18080 (http) with context path ''
+[INFO ] 2024-06-14 02:28:12.987 [restartedMain][StartupInfoLogger.java] PomsApplication - Started PomsApplication in 2.552 seconds (process running for 128488.946)
+[INFO ] 2024-06-14 02:28:12.989 [restartedMain][ConditionEvaluationDeltaLoggingListener.java] ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+[INFO ] 2024-06-14 02:28:16.006 [http-nio-18080-exec-1][FrameworkServlet.java] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2024-06-14 02:28:16.009 [http-nio-18080-exec-1][FrameworkServlet.java] DispatcherServlet - Completed initialization in 3 ms
