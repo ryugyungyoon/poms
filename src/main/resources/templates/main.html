@@ -1,72 +1,72 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/default-layout}">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{fragments/default-layout}">
 <head>
-    <title>POMS 메인</title>
+	<title>POMS 메인</title>
 </head>
 <th:block layout:fragment="custom-js">
 <script type="text/javascript">
-$(function() {
-    let imagePaths = [
-        "/images/poms/product/SOLEW_01.jpg",
-        "/images/poms/product/SOLEW_02.jpg",
-        "/images/poms/product/SOLEW_03.jpg",
-        "/images/poms/product/SOLEW_04.jpg",
-        "/images/poms/product/SOLEW_05.jpg",
-        "/images/poms/product/SOLEW_06.jpg",
-        "/images/poms/product/SOLEW_JP_01.jpg",
-        "/images/poms/product/SOLEW_JP_02.jpg",
-        "/images/poms/product/SOLEW_JP_03.jpg",
-        "/images/poms/product/SOLEW_JP_04.jpg"
-    ];
+	$(function() {
+		//cfn_ajaxRequest();
+		let imagePaths = [
+			"/images/poms/product/SOLEW_01.jpg",
+			"/images/poms/product/SOLEW_02.jpg",
+			"/images/poms/product/SOLEW_03.jpg",
+			"/images/poms/product/SOLEW_04.jpg",
+			"/images/poms/product/SOLEW_05.jpg",
+			"/images/poms/product/SOLEW_06.jpg",
+			"/images/poms/product/SOLEW_JP_01.jpg",
+			"/images/poms/product/SOLEW_JP_02.jpg",
+			"/images/poms/product/SOLEW_JP_03.jpg",
+			"/images/poms/product/SOLEW_JP_04.jpg"
+		];
 
-    // 이미지 그리드를 생성합니다.
-    let $imageGrid = $("#imageGrid");
-    let $row = $("<div class='row'></div>");
-    for (let i = 0; i < imagePaths.length; i++) {
-        let imagePath = imagePaths[i];
-        $row.append('<div class="imageContainer"><img src="' + imagePath + '"></div>');
+		for (let i = 0; i < imagePaths.length; i++) {
+			//이미지 그리드에 이미지 6개씩 담을 row 생성
+			if (i === 0 || (i+1)%6 === 0) {
+				$('#imageGrid').append('<div class="row" id="row_'+ Math.trunc(((i+1)/6)+1) +'"></div>');
+			}
 
-        // 6개의 이미지가 출력되었을 때 새로운 줄을 생성합니다.
-        if ((i + 1) % 6 === 0 || i === imagePaths.length - 1) {
-            $imageGrid.append($row);
-            $row = $("<div class='row'></div>");
-        }
-    }
-});
+			//row에 이미지 출력
+			let rowNumber;
+			(i+1)/6 === 1? rowNumber = Math.trunc(((i+1)/6)) : rowNumber = Math.trunc(((i+1)/6)+1);
+
+			$('#row_'+ rowNumber ).append('<div class="productContainer"><img src="' + imagePaths[i] + '"></div>');
+		}
+	});
 </script>
 <style>
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 
-    .imageContainer {
-        width: 13vw; /* 한 줄에 6개씩 출력하기 위해 너비를 조절합니다. */
-        margin: 10px;
-        box-sizing: border-box; /* 가로 여백이 너비를 초과하지 않도록 설정합니다. */
-    }
+	.productContainer {
+		width: 13vw; /* 한 줄에 6개씩 출력하기 위해 너비를 조절합니다. */
+		margin: 10px;
+		box-sizing: border-box; /* 가로 여백이 너비를 초과하지 않도록 설정합니다. */
+	}
 
-    .imageContainer img {
-        border: 1px solid #c6c6c6;
-        width: 100%;
-        height: auto;
-    }
+	.productContainer img {
+		border: 1px solid #c6c6c6;
+		width: 100%;
+		height: auto;
+	}
 </style>
 </th:block>
 <body>
 <th:block layout:fragment="main-content">
-    <div id="imageGrid"></div>
-    <h2>메인화면</h2>
-    <div class="form-control">
-        <label for="id">아이디</label>
-        <div th:text="${id}"></div>
-        <div th:text="${role}"></div>
-        <input type="text" id="id" name="id" required>
-    </div>
+	<div id="imageGrid"></div>
+	<h2>메인화면</h2>
+	<div class="form-control">
+		<label for="id">아이디</label>
+		<div th:text="${id}"></div>
+		<div th:text="${role}"></div>
+		<input type="text" id="id" name="id" required>
+	</div>
 </th:block>
 </body>
 </html>
