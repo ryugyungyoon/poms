@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{fragments/default-layout}">
+<head>
+	<title>POMS</title>
+</head>
+<th:block layout:fragment="custom-js">
+<script type="text/javascript">
+	$(function() {
+		//하위 카테고리 리스트 조회
+		cinit_list('/category/woman/list');
+
+		//
+
+
+
+
+	});
+	//요청 결과 처리 ajax callback
+	function fn_callback(callbackId, resData){
+		//하위 카테고리 리스트 조회
+		if(callbackId === 'list'){
+			let list = resData.body.list;
+			console.log('[##### 하위 카테고리 리스트 조회 결과 처리]\n', list);
+
+			/*
+			if(list.length > 0){
+				var paging = resData.body.paging;
+				var htmlStr = '';
+				for(var i=0; i<list.length; i++){
+					var insuranceSeq = list[i].insuranceSeq;
+					htmlStr += '<tr class="list-tr" id="'+insuranceSeq+'">';
+					var disabled = ''
+					if(list[i].delYn == 'Y'){
+						disabled = ' disabled';
+					}
+
+					htmlStr += '	<td onclick="event.cancelBubble=true">';
+					htmlStr += '		<input type="checkbox" name="insuranceSeqs" value="'+insuranceSeq+'"'+disabled+' id="check'+insuranceSeq+'">';
+					htmlStr += '		<label for="check'+insuranceSeq+'" class="check-label m-auto"><span></span></label>';
+					htmlStr += '	</td>';
+					htmlStr += '	<td>'+cfmt_listNo(paging, i)+'</td>';
+					htmlStr += '	<td>'+list[i].insuranceNm+'</td>';
+					htmlStr += '	<td>'+cfmt_nullForMarkup(list[i].companyOwner, '-')+'</td>';
+					htmlStr += '	<td>'+cfmt_nullForMarkup(cfmt_rgistrationNum(list[i].registrationNum), '-')+'</td>';
+					htmlStr += '	<td>'+cfmt_nullForMarkup(cfmt_telNum(list[i].companyContactNum), '-')+'</td>';
+					htmlStr += '	<td>'+cfmt_nullForMarkup(list[i].regNm, '-')+'</td>';
+					htmlStr += '	<td>'+cfmt_nullForMarkup(list[i].regDate, '-')+'</td>';
+					htmlStr += '	<td>'+cfmt_yn(list[i].delYn, 'delYn')+'</td>';
+					htmlStr += '</tr>';
+				}
+
+				//$('#dataTbody').html(htmlStr);
+
+
+			}
+			else{
+			}
+			*/
+		}
+		else{}
+	}
+</script>
+<style>
+</style>
+</th:block>
+<body>
+<th:block layout:fragment="main-content">
+	<form class="product_form" id="searchForm">
+		<input type="hidden" name="categoryIdx" id="categoryIdx" value="1">
+		<!--
+		<input type="hidden" name="pageNum" id="pageNum" th:value="${searchForm.pageNum}">
+		<input type="hidden" name="dataCnt" id="dataCnt" th:value="${searchForm.dataCnt}">
+		-->
+	</form>
+	<h2>WOMAN</h2>
+
+</th:block>
+</body>
+</html>

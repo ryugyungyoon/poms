@@ -8,20 +8,22 @@ import java.util.List;
 
 @Getter
 public class ProductResponse {
+
 	private Long productIdx;
 	private Long brandIdx;
 	private Long categoryIdx;
 	private String name;
 	private String code;
-	private List<ProductImage> productImages;
+	private String price;
+	private List<ProductImage> productImageList;
 
-	public ProductResponse(Long productIdx, Long brand_idx, Long categoryIdx, String name, String code, List<ProductImage> productImages) {
+	public ProductResponse(Long productIdx, Long brand_idx, Long categoryIdx, String name, String code, List<ProductImage> productImageList) {
 		this.productIdx = productIdx;
 		this.brandIdx = brand_idx;
 		this.categoryIdx = categoryIdx;
 		this.name = name;
 		this.code = code;
-		this.productImages = productImages;
+		this.productImageList = productImageList;
 	}
 
 	public ProductResponse(Product product){
@@ -30,6 +32,7 @@ public class ProductResponse {
         this.categoryIdx = product.getCategoryIdx();
         this.name = product.getName();
         this.code = product.getCode();
-        this.productImages = product.getProductImages();
+        this.price = product.getPrice();
+        this.productImageList = product.getProductImageList();
 	}
 }

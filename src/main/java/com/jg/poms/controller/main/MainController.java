@@ -31,7 +31,7 @@ public class MainController {
         GrantedAuthority auth = iter.next();
         String role = auth.getAuthority();
 
-        model.addAttribute("products", productService.getProducts());
+        model.addAttribute("productList", productService.getProductList());
 
         model.addAttribute("id", id);
         model.addAttribute("role", role);

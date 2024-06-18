@@ -3,10 +3,12 @@ package com.jg.poms.controller.product;
 import com.jg.poms.dto.product.response.ProductResponse;
 import com.jg.poms.service.product.ProductService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+@RequestMapping("/product")
 @Controller
 public class ProductController {
 	private final ProductService productService;
@@ -15,8 +17,8 @@ public class ProductController {
 		this.productService = productService;
 	}
 
-	@GetMapping("/products")
-	public List<ProductResponse> getProducts(){
-		return productService.getProducts();
+	@PostMapping("list")
+	public List<ProductResponse> getProductList(){
+		return productService.getProductList();
 	}
 }

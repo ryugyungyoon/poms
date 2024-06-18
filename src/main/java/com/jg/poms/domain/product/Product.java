@@ -4,7 +4,6 @@ import com.jg.poms.domain.product.productimage.ProductImage;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,8 @@ public class Product {
 
 	private String code;
 
+	private String price;
+
 	private boolean deleteYn;
 
 	private LocalDateTime registrationDate;
@@ -33,23 +34,17 @@ public class Product {
 
 	//상품 이미지와 연관 관계 설정
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ProductImage> productImages = new ArrayList<>();
+	private List<ProductImage> productImageList = new ArrayList<>();
 
-	public void setProductImage(List<ProductImage> productImages) {
-		this.productImages = productImages;
-		for(ProductImage productImage : productImages){
+	public void setProductImage(List<ProductImage> productImageList) {
+		this.productImageList = productImageList;
+		for(ProductImage productImage : productImageList){
             productImage.setProduct(this);
         }
 	}
 
+	//JPA 사용을 위한 기본생성자
 	public Product() {
     }
 
-	public Product(Long productIdx, Long brandIdx, Long categoryIdx, String name, String code) {
-		this.productIdx = productIdx;
-		this.brandIdx = brandIdx;
-		this.categoryIdx = categoryIdx;
-		this.name = name;
-		this.code = code;
-	}
 }

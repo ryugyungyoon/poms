@@ -90,6 +90,7 @@ function cfn_ajaxRequest(url, method, data, callbackId){
 		data: data,
 		dataType: 'json',
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		//contentType: ' application/json; charset-utf-8',
 		async: true,
 		success: function(resData){
 			fn_callback(callback, resData);
