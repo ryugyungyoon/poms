@@ -36,7 +36,9 @@ public class User {
 	private String address;
 	@Column(length = 100)
 	private String addressDetail;
+	@Column
 	private LocalDateTime registrationDate;
+	@Column
 	private LocalDateTime modifyDate;
 
 	private String role;
