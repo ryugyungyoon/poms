@@ -2,11 +2,14 @@ package com.jg.poms.controller.category;
 
 import com.jg.poms.core.http.HttpBuilder;
 import com.jg.poms.core.http.ResponseVO;
+import com.jg.poms.dto.category.response.CategoryResponse;
 import com.jg.poms.service.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/category")
 @Controller
@@ -22,12 +25,20 @@ public class CategoryController{
 	 *
 	 * @author zisooya
 	 */
-	@GetMapping("women/list-form")
-	public String listForm(Model model) {
-		//검색 조건
-		//model.addAttribute("searchForm", searchForm);
+	@GetMapping("{categoryIdx}/list-form")
+	public String listForm(Model model, @PathVariable(value="categoryIdx") Long categoryIdx) {
+		List<CategoryResponse> subCategoryList;
+		String pageUrl = "";
 
-		return "/menu/category/women/category_women_list";
+		//카테고리 별 페이지 반환
+		if(categoryIdx == 4){
+			subCategoryList = categoryService.getSubCategoryList(categoryIdx);
+			model.addAttribute("subCategoryList", subCategoryList);
+			pageUrl = "/menu/category/women/category_women_list";
+		}
+
+		//model.addAttribute("searchForm", searchForm);
+		return pageUrl;
 	}
 	/**
 	 * [카테고리 전체 리스트 조회]
