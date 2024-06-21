@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/category")
 @Controller
-public class CategoryController {
+public class CategoryController extends BaseController{
 
 	private final CategoryService categoryService;
-	private final HttpBuilder httpBuilder;
 
-	public CategoryController(CategoryService categoryService, HttpBuilder httpBuilder) {
+	public CategoryController(CategoryService categoryService) {
 		this.categoryService = categoryService;
-		this.httpBuilder = httpBuilder;
 	}
 
 	/**

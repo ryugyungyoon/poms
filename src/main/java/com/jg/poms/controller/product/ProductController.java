@@ -1,5 +1,6 @@
 package com.jg.poms.controller.product;
 
+import com.jg.poms.controller.base.BaseController;
 import com.jg.poms.core.http.HttpBuilder;
 import com.jg.poms.core.http.ResponseVO;
 import com.jg.poms.dto.product.response.ProductResponse;
@@ -14,14 +15,12 @@ import java.util.List;
 
 @RequestMapping("/product")
 @Controller
-public class ProductController {
+public class ProductController extends BaseController {
 
 	private final ProductService productService;
-	private HttpBuilder httpBuilder;
 
-	public ProductController(ProductService productService, HttpBuilder httpBuilder) {
+	public ProductController(ProductService productService) {
 		this.productService = productService;
-		this.httpBuilder = httpBuilder;
 	}
 
 	@PostMapping("/all/list")
