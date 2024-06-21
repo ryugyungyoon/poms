@@ -1,8 +1,6 @@
 package com.jg.poms.service.category;
 
-import com.jg.poms.domain.category.Category;
 import com.jg.poms.domain.category.CategoryRepository;
-import com.jg.poms.dto.category.request.CategoryRequest;
 import com.jg.poms.dto.category.response.CategoryResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,7 +28,7 @@ public class CategoryService {
 	}
 
 	@Transactional(readOnly = true)
-	//하위 카테고리 조회(select)
+	//현재 카테고리의 하위 카테고리 리스트 조회(select)
 	public List<CategoryResponse> getSubCategoryList(Long categoryIdx) {
 		return categoryRepository.findByParentCategory_CategoryIdx(categoryIdx).stream()
 				.map(CategoryResponse::new)

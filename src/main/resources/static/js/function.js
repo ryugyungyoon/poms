@@ -95,6 +95,7 @@ function cfn_ajaxRequest(url, method, data, callbackId){
 		success: function(resData){
 			fn_callback(callback, resData);
 		}
+
 	});
 }
 

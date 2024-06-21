@@ -1,11 +1,8 @@
 package com.jg.poms.dto.category.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jg.poms.domain.category.Category;
-import jakarta.persistence.JoinColumn;
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter

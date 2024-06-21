@@ -9,10 +9,11 @@
 <th:block layout:fragment="custom-js">
 <script type="text/javascript">
 	$(function() {
-		//하위 카테고리 리스트 조회
-		cinit_list('/category/woman/list');
+		//여성 의류 하위 카테고리 리스트 조회
+		cinit_list('/category/sub/list','subList');
 
-		//
+		//여성 의류 카테고리에 해당하는 상품 리스트 조회
+		cinit_list('/product/list', 'productList');
 
 
 
@@ -21,7 +22,7 @@
 	//요청 결과 처리 ajax callback
 	function fn_callback(callbackId, resData){
 		//하위 카테고리 리스트 조회
-		if(callbackId === 'list'){
+		if(callbackId === 'subList'){
 			let list = resData.body.list;
 			console.log('[##### 하위 카테고리 리스트 조회 결과 처리]\n', list);
 
@@ -52,6 +53,7 @@
 					htmlStr += '</tr>';
 				}
 
+
 				//$('#dataTbody').html(htmlStr);
 
 
@@ -59,6 +61,12 @@
 			else{
 			}
 			*/
+		}
+		else if(callbackId === 'productList') {
+			let list = resData.body.list;
+			console.log('[##### 상품 리스트 조회 결과 처리]\n', list);
+
+			//product/list
 		}
 		else{}
 	}
@@ -68,15 +76,27 @@
 </th:block>
 <body>
 <th:block layout:fragment="main-content">
-	<form class="product_form" id="searchForm">
-		<input type="hidden" name="categoryIdx" id="categoryIdx" value="1">
-		<!--
-		<input type="hidden" name="pageNum" id="pageNum" th:value="${searchForm.pageNum}">
-		<input type="hidden" name="dataCnt" id="dataCnt" th:value="${searchForm.dataCnt}">
-		-->
-	</form>
-	<h2>WOMAN</h2>
+<section class="category-list">
+<form class="product_form" id="searchForm">
+	<input type="hidden" name="categoryIdx" id="categoryIdx" value="4">
+	<!--
+	<input type="hidden" name="pageNum" id="pageNum" th:value="${searchForm.pageNum}">
+	<input type="hidden" name="dataCnt" id="dataCnt" th:value="${searchForm.dataCnt}">
+	-->
+</form>
+	<article class="list__article-001">
+		<div class="list__title-div" >
+			<h2 class="title__medium">WOMEN</h2>
+		</div>
+		<div class="list__sub-category-div">
+		</div>
+	</article>
+	<article class="list__article-002">
+		<div class="list__product-list-div">
 
+		</div>
+	</article>
+</section>
 </th:block>
 </body>
 </html>

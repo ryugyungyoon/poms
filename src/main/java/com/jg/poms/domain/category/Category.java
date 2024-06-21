@@ -1,6 +1,7 @@
 package com.jg.poms.domain.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jg.poms.domain.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,10 @@ public class Category {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parent_idx")
 	private Category parentCategory;
+
+	//상품과 연관 관계 설정 (읽기 전용)
+	@OneToMany(mappedBy = "category")
+	private List<Product> product = new ArrayList<>();
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL)

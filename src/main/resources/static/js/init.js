@@ -5,9 +5,10 @@
  * @param url 요청 url
  * @returns {void}
  */
-function cinit_list(url){
+function cinit_list(url, callbackId){
 	let listReqData = $('#searchForm').serialize();
-	cfn_ajaxRequest(url, 'POST', listReqData);
+	cfn_ajaxRequest(url, 'POST', listReqData, callbackId);
 }
+
 
 
