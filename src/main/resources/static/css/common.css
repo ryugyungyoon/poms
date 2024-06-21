@@ -16,8 +16,18 @@ a {
     text-decoration: none;
 }
 
+ul {
+   padding: 0;
+}
+
 li {
     list-style-type: none;
+}
+
+/* h 제목 태그 크기별 */
+.title__medium {
+    font-size: 32px;
+    font-weight: 300;
 }
 
 /* width */

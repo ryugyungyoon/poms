@@ -3,7 +3,7 @@
 /*** 그리드 관련 css ***/
 .gird-container {
     display: grid;
-    grid-template-columns: minmax(195px, 20%) 65% minmax(145px, 15%);
+    grid-template-columns: calc((100% - 1240px)/2) 1240px calc((100% - 1240px)/2);
     grid-template-rows: 90px 90px 68px minmax(500px, auto) 100px;
     place-items: stretch stretch;
 }
@@ -33,9 +33,8 @@
 }
 
 .grid-main {
-    grid-column: 1 / 4;
+    grid-column: 2 / 3;
     grid-row: 4 / 5;
-    padding: 30px 4vw;
 }
 
 .grid-footer {
