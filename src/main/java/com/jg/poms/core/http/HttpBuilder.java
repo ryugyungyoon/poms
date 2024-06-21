@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jg.poms.core.error.ErrorCode;
 import com.jg.poms.core.error.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
@@ -25,14 +26,11 @@ public class HttpBuilder {
 	public static final String SUCCESS_CODE = "200";
 	public static final String FAIL_CODE = "500";
 
+	@Autowired
 	private MessageSource messageSource;
 
+	@Autowired
 	private ObjectMapper objectMapper;
-
-	public HttpBuilder(MessageSource messageSource, ObjectMapper objectMapper) {
-		this.messageSource = messageSource;
-		this.objectMapper = objectMapper;
-	}
 
 	/*==============================================================================
 	 * 일반 요청 관련
@@ -68,7 +66,7 @@ public class HttpBuilder {
 	public ResponseVO resultForObjectList(Object resData){
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", resData);
-		
+		System.out.println(resData.toString());
 		ResponseVO resVO = new ResponseVO(SUCCESS_CODE);
 		resVO.setBody(map);
 		resVO.getHeader().setResponseMsg(messageSource.getMessage(MESSAGE_PREFIX + resVO.getHeader().getResponseCode(),

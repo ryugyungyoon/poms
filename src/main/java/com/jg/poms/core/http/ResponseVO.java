@@ -6,7 +6,7 @@ import lombok.ToString;
 /**
  * POST 요청에 대한 Response 객체
  * 
- * @author zisooyq
+ * @author zisooya
  */
 @Data
 @ToString

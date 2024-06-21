@@ -1,9 +1,11 @@
 package com.jg.poms.domain.product;
 
+import com.jg.poms.domain.category.Category;
 import com.jg.poms.domain.product.productimage.ProductImage;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,10 @@ public class Product {
 
 	private Long brandIdx;
 
-	private Long categoryIdx;
+	//카테고리와 연관 관계 설정
+	@ManyToOne
+	@JoinColumn(name = "category_idx")
+	private Category category;
 
 	private String name;
 
