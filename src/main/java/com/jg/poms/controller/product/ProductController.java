@@ -1,10 +1,10 @@
 package com.jg.poms.controller.product;
 
-import com.jg.poms.controller.base.BaseController;
 import com.jg.poms.core.http.HttpBuilder;
 import com.jg.poms.core.http.ResponseVO;
 import com.jg.poms.dto.product.response.ProductResponse;
 import com.jg.poms.service.product.ProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,13 +15,12 @@ import java.util.List;
 
 @RequestMapping("/product")
 @Controller
-public class ProductController extends BaseController {
+@RequiredArgsConstructor
+public class ProductController {
 
 	private final ProductService productService;
 
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
+	private final HttpBuilder httpBuilder;
 
 	@PostMapping("/all/list")
 	public List<ProductResponse> getProductList(){

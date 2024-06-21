@@ -32,12 +32,6 @@ public class HttpBuilder {
 	@Autowired
 	private ObjectMapper objectMapper;
 
-	public HttpBuilder(MessageSource messageSource, ObjectMapper objectMapper) {
-
-		this.messageSource = messageSource;
-		this.objectMapper = objectMapper;
-	}
-
 	/*==============================================================================
 	 * 일반 요청 관련
 	 ==============================================================================*/

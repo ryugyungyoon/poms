@@ -1,22 +1,21 @@
 package com.jg.poms.controller.category;
 
-import com.jg.poms.controller.base.BaseController;
 import com.jg.poms.core.http.HttpBuilder;
 import com.jg.poms.core.http.ResponseVO;
 import com.jg.poms.service.category.CategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/category")
 @Controller
-public class CategoryController extends BaseController{
+@RequiredArgsConstructor
+public class CategoryController{
 
 	private final CategoryService categoryService;
 
-	public CategoryController(CategoryService categoryService) {
-		this.categoryService = categoryService;
-	}
+	private final HttpBuilder httpBuilder;
 
 	/**
 	 * [리스트 페이지 이동]
