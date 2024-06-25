@@ -268,7 +268,7 @@ ul[class^="category__ul-depth01"] > li > ul > li {
     width: 100%;
     padding: 3px 30px;
     position: relative;
-    right: 50px;
+    right: 10px;
     font-size: 14px;
     color: #7b7b7b;
 }
