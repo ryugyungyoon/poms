@@ -1,14 +1,9 @@
 package com.jg.poms.dto.brand.response;
 
 import com.jg.poms.domain.brand.Brand;
-import com.jg.poms.domain.category.Category;
-import com.jg.poms.domain.product.Product;
-import com.jg.poms.domain.product.productimage.ProductImage;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 public class BrandResponse {
