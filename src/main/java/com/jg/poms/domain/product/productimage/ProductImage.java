@@ -1,5 +1,6 @@
 package com.jg.poms.domain.product.productimage;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jg.poms.domain.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class ProductImage {
 	//상품과 연관 관계 설정
 	@ManyToOne
 	@JoinColumn(name="product_idx")
+	@JsonIgnore
 	private Product product;
 
 	private String productImageType;

@@ -63,19 +63,4 @@ public class CategoryController{
 		return httpBuilder.resultForObjectList(categoryService.getSubCategoryList(categoryIdx));
 	}
 
-
-	/**
-	 * [리스트 url]
-	 *
-	 * @author zisooya
-	 */
-	/*
-	@GetMapping("list-form/{gender}/{depth}")
-	public String listForm(Model model
-			, @PathVariable("gender") String gender
-			, @PathVariable("depth") String depth){
-		return "";
-	}
-	*/
-
 }

@@ -1,5 +1,6 @@
 package com.jg.poms.domain.product;
 
+import com.jg.poms.domain.brand.Brand;
 import com.jg.poms.domain.category.Category;
 import com.jg.poms.domain.product.productimage.ProductImage;
 import jakarta.persistence.*;
@@ -18,7 +19,10 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productIdx = null;
 
-	private Long brandIdx;
+	//브랜드와 연관 관계 설정
+	@ManyToOne
+	@JoinColumn(name = "brand_idx")
+	private Brand brand;
 
 	//카테고리와 연관 관계 설정
 	@ManyToOne
