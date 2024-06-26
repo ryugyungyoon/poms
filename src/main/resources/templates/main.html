@@ -12,48 +12,22 @@
 		//상품 전체 리스트 조회
 		cinit_list('/product/list');
 
+		cinit_list('/category/all/list', 'categoryList');
 
-		//cfn_ajaxRequest();
-		let imagePaths = [
-			"/images/poms/product/SOLEW_01.jpg",
-			"/images/poms/product/SOLEW_02.jpg",
-			"/images/poms/product/SOLEW_03.jpg",
-			"/images/poms/product/SOLEW_04.jpg",
-			"/images/poms/product/SOLEW_05.jpg",
-			"/images/poms/product/SOLEW_06.jpg",
-			"/images/poms/product/SOLEW_JP_01.jpg",
-			"/images/poms/product/SOLEW_JP_02.jpg",
-			"/images/poms/product/SOLEW_JP_03.jpg",
-			"/images/poms/product/SOLEW_JP_04.jpg"
-		];
-
-		for (let i = 0; i < imagePaths.length; i++) {
-			//이미지 그리드에 이미지 6개씩 담을 row 생성
-			if (i === 0 || (i+1)%6 === 0) {
-				$('#imageGrid').append('<div class="row" id="row_'+ Math.trunc(((i+1)/6)+1) +'"></div>');
-			}
-
-			//row에 이미지 출력
-			let rowNumber;
-			(i+1)/6 === 1? rowNumber = Math.trunc(((i+1)/6)) : rowNumber = Math.trunc(((i+1)/6)+1);
-
-			$('#row_'+ rowNumber ).append('<div class="productContainer"><img src="' + imagePaths[i] + '"></div>');
-		}
 	});
+
+	//요청 결과 처리 ajax callback
+	function fn_callback(callbackId, resData){
+		if(callbackId === 'categoryList') { //여성 의류 카테고리에 해당하는 상품 리스트 조회
+			let categoryList = resData.body.list;
+
+			console.log('[##### 카테고리 리스트 조회 결과 처리]\n', categoryList);
+
+		}
+		else{}
+	}
 </script>
 <style>
-	.row {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-
-	.productContainer {
-		width: 13vw; /* 한 줄에 6개씩 출력하기 위해 너비를 조절합니다. */
-		margin: 10px;
-		box-sizing: border-box; /* 가로 여백이 너비를 초과하지 않도록 설정합니다. */
-	}
-
 	.productContainer img {
 		border: 1px solid #c6c6c6;
 		width: 100%;
