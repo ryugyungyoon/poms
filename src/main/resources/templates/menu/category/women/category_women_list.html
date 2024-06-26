@@ -9,22 +9,35 @@
 <th:block layout:fragment="custom-js">
 <script type="text/javascript">
 	$(function() {
-		//여성 의류 하위 카테고리 리스트 조회
-		cinit_list('/category/sub/list','subList');
-
 		//여성 의류 카테고리에 해당하는 상품 리스트 조회
 		cinit_list('/product/list', 'productList');
-
-
-
 
 	});
 	//요청 결과 처리 ajax callback
 	function fn_callback(callbackId, resData){
-		//하위 카테고리 리스트 조회
-		if(callbackId === 'subList'){
-			let list = resData.body.list;
-			console.log('[##### 하위 카테고리 리스트 조회 결과 처리]\n', list);
+		if(callbackId === 'productList') { //여성 의류 카테고리에 해당하는 상품 리스트 조회
+			let productList = resData.body.list;
+
+			console.log('[##### 상품 리스트 조회 결과 처리]\n', productList);
+			if(productList.length > 0) {
+				let htmlStr = '';
+
+				htmlStr += '<ul class="product-list__ul">';
+					for(i in productList) {
+						htmlStr += '	<li class="product-list__li" id="'+ productList[i].productIdx +'">';
+						htmlStr += '		<img class="product-list__img" src="'+productList[i].thumbnailImageFilePath+'.jpg"></img>';
+						htmlStr += '		<div class="product-list__brand-name">' +productList[i].brand.name+ '</div>';
+						//좋아요 버튼 위치만 잡아둠
+						//htmlStr += '		<div class="product-list__brand-name">' +productList[i].brand.name+ '<span class="product-list__like"><button type="button" class="btn-like"><img class="btn-img" src="/images/icon/heart_empty.png" width="16" height="16" alt="heart icon"/></button></span></div>';
+						htmlStr += '		<div class="product-list__product-name">' +productList[i].name+ '</div>';
+						htmlStr += '		<div class="product-list__product-price">' +productList[i].price+ '<span class="color">25%</span></div>';
+						htmlStr += '		';
+						htmlStr += '	</li>';
+					}
+				htmlStr += '</ul>';
+				$('#productListDiv').html(htmlStr);
+			}
+
 
 			/*
 			if(list.length > 0){
@@ -52,28 +65,113 @@
 					htmlStr += '	<td>'+cfmt_yn(list[i].delYn, 'delYn')+'</td>';
 					htmlStr += '</tr>';
 				}
-
-
 				//$('#dataTbody').html(htmlStr);
-
-
 			}
 			else{
 			}
 			*/
 		}
-		else if(callbackId === 'productList') {
-			let list = resData.body.list;
-			console.log('[##### 상품 리스트 조회 결과 처리]\n', list);
-
-			//product/list
-		}
 		else{}
 	}
 </script>
 <style>
+	.list__title-div {
+		width: 100%;
+		height: fit-content;
+        box-sizing: border-box;
+        text-align: center;
+	}
+
+	.sub-category {
+		width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+	}
+
+	.sub-category__ul {
+		width: 100%;
+		height: 100%;
+		display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+		border-top: solid 2px #000;
+		border-bottom: solid 1px #000;
+	}
+
+	.sub-category__li {
+		width: calc(100%/5);
+		height: 50px;
+		line-height: 50px;
+        box-sizing: border-box;
+		text-align: center;
+		border-bottom: solid 1px #ccc;
+	}
+
+    .sub-category__li:not(:nth-child(5n+0))::after{
+		content: '|';
+		float: right;
+		color: #ccc;
+	}
+
+	/* 상품 리스트 css */
+	.list__product-list-div {
+		width: 100%;
+		height: 100%;
+        box-sizing: border-box;
+	}
+
+    .product-list__ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+	.product-list__li {
+		width: calc((100%/6) - 20px);
+        height: auto;
+        box-sizing: border-box;
+		margin: 10px;
+	}
+
+	.product-list__img {
+		display: block;
+		width : 100%;
+		height: auto;
+
+	}
+
+	.product-list__brand-name {
+		display: flex;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 7px;
+	}
+
+    .product-list__brand-name span {
+        margin-left: auto;
+    }
+
+	.product-list__product-name {
+		color: #777;
+        font-size: 14px;
+        margin-top: 7px;
+	}
+
+	.product-list__product-price {
+		display: flex;
+		font-size: 16px;
+        font-weight: 500;
+        margin-top: 14px;
+	}
+
+    .product-list__product-price span {
+        margin-left: auto;
+	}
+
 </style>
 </th:block>
+
 <body>
 <th:block layout:fragment="main-content">
 <section class="category-list">
@@ -86,14 +184,19 @@
 </form>
 	<article class="list__article-001">
 		<div class="list__title-div" >
-			<h2 class="title__medium">WOMEN</h2>
+			<h2 class="title__medium">의류</h2>
 		</div>
-		<div class="list__sub-category-div">
+		<div class="sub-category">
+				<ul class="sub-category__ul">
+					<li class="sub-category__li"><span>전체</span></li>
+					<li class="sub-category__li" th:each="subCategory : ${subCategoryList}">
+						<span th:text="${subCategory.categoryName}"></span>
+					</li>
+				</ul>
 		</div>
 	</article>
 	<article class="list__article-002">
-		<div class="list__product-list-div">
-
+		<div class="list__product-list-div" id="productListDiv">
 		</div>
 	</article>
 </section>

@@ -20,8 +20,8 @@ public class Product {
 	private Long productIdx = null;
 
 	//브랜드와 연관 관계 설정
-	@OneToOne
-	@JoinColumn(name = "brandIdx")
+	@ManyToOne
+	@JoinColumn(name = "brand_idx")
 	private Brand brand;
 
 	//카테고리와 연관 관계 설정

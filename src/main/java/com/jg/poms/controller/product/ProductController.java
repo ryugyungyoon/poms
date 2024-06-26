@@ -23,6 +23,7 @@ public class ProductController {
 	private final HttpBuilder httpBuilder;
 
 	@PostMapping("/all/list")
+	@ResponseBody
 	public List<ProductResponse> getProductList(){
 		return productService.getProductList();
 	}
