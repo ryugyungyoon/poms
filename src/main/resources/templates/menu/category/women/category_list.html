@@ -12,6 +12,12 @@
 		//여성 의류 카테고리에 해당하는 상품 리스트 조회
 		cinit_list('/product/list', 'productList');
 
+		//하위 카테고리 클릭 이벤트
+		$('.sub-category__li').click(function(){
+			$('#categoryIdx').val(this.value);
+			cinit_list('/product/list', 'productList');
+		});
+
 	});
 	//요청 결과 처리 ajax callback
 	function fn_callback(callbackId, resData){
@@ -37,7 +43,9 @@
 				htmlStr += '</ul>';
 				$('#productListDiv').html(htmlStr);
 			}
-
+			else {
+				$('#productListDiv').html("해당 상품이 존재하지 않습니다.");
+			}
 
 			/*
 			if(list.length > 0){
@@ -107,6 +115,7 @@
         box-sizing: border-box;
 		text-align: center;
 		border-bottom: solid 1px #ccc;
+		cursor: pointer;
 	}
 
     .sub-category__li:not(:nth-child(5n+0))::after{
@@ -176,7 +185,7 @@
 <th:block layout:fragment="main-content">
 <section class="category-list">
 <form class="product_form" id="searchForm">
-	<input type="hidden" name="categoryIdx" id="categoryIdx" value="4">
+	<input type="hidden" name="categoryIdx" id="categoryIdx" th:value="${categoryIdx}">
 	<!--
 	<input type="hidden" name="pageNum" id="pageNum" th:value="${searchForm.pageNum}">
 	<input type="hidden" name="dataCnt" id="dataCnt" th:value="${searchForm.dataCnt}">
@@ -189,7 +198,7 @@
 		<div class="sub-category">
 				<ul class="sub-category__ul">
 					<li class="sub-category__li"><span>전체</span></li>
-					<li class="sub-category__li" th:each="subCategory : ${subCategoryList}">
+					<li class="sub-category__li" id="subCategory" th:each="subCategory : ${subCategoryList}" th:value="${subCategory.categoryIdx}">
 						<span th:text="${subCategory.categoryName}"></span>
 					</li>
 				</ul>

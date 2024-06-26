@@ -27,25 +27,23 @@ public class CategoryController{
 	 */
 	@GetMapping("{categoryIdx}/list-form")
 	public String listForm(Model model, @PathVariable(value="categoryIdx") Long categoryIdx) {
+		//현재 카테고리의 하위 카테고리 리스트 조회
 		List<CategoryResponse> subCategoryList;
-		String pageUrl = "";
 
-		//카테고리 별 페이지 반환
-		if(categoryIdx == 4){
-			subCategoryList = categoryService.getSubCategoryList(categoryIdx);
-			model.addAttribute("subCategoryList", subCategoryList);
-			pageUrl = "/menu/category/women/category_women_list";
-		}
+		subCategoryList = categoryService.getSubCategoryList(categoryIdx);
+
+		model.addAttribute("subCategoryList", subCategoryList);
+		model.addAttribute("categoryIdx", categoryIdx);
 
 		//model.addAttribute("searchForm", searchForm);
-		return pageUrl;
+		return "/menu/category/women/category_list";
 	}
 	/**
 	 * [카테고리 전체 리스트 조회]
 	 *
 	 * @author zisooya
 	 */
-	@PostMapping("women/listd")
+	@PostMapping("all/list")
 	@ResponseBody
 	public ResponseVO getCategoryList() {
 		//return httpBuilder.resultForPagingList(categoryService.getCategoryList(), reqVO);
