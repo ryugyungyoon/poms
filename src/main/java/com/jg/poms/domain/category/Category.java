@@ -25,26 +25,6 @@ public class Category {
 
 	private String categoryName;
 
-	//카테고리 연관 관계 설정
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "parent_idx")
-	private Category parentCategory;
-
-	//상품과 연관 관계 설정 (읽기 전용)
-	@OneToMany(mappedBy = "category")
-	private List<Product> product = new ArrayList<>();
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL)
-	private List<Category> childCategoryList = new ArrayList<>();
-
-	public void setChildCategory(List<Category> childCategoryList) {
-		this.childCategoryList = childCategoryList;
-		for(Category childCategory : childCategoryList){
-            childCategory.setParentCategory(this);
-        }
-	}
-
 	private String displayOrder;
 
 	private Boolean useYn;
@@ -53,8 +33,19 @@ public class Category {
 
 	private LocalDateTime modifyDate;
 
+	//상품과 연관 관계 설정 (읽기 전용)
+	@OneToMany(mappedBy = "category")
+	private List<Product> product = new ArrayList<>();
+
+	//카테고리 연관 관계 설정
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "parent_idx")
+	private Category parentCategory;
+
+	@OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL)
+	private List<Category> childCategoryList = new ArrayList<>();
+
 	//JPA 사용을 위한 기본생성자
 	public Category(){}
-
 
 }
