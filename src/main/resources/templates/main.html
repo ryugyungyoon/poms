@@ -40,6 +40,11 @@
 			$('#row_'+ rowNumber ).append('<div class="productContainer"><img src="' + imagePaths[i] + '"></div>');
 		}
 	});
+
+	//상세 페이지 이동 함수
+	function go_viewForm(idx){
+		location.href = '/product/view-form?productIdx='+idx;
+	}
 </script>
 <style>
 	.row {
@@ -74,8 +79,8 @@
 	<div id="imageGrid"></div>
 	<h2>메인화면</h2>
 	<tr th:each="product : ${productList}">
-		<td><span th:text="|상품명: ${product.name}|">name</span></td>
-		<td><p th:each="productImage : ${product.productImageList}"><span th:text="${productImageStat.index}+1"></span><span th:text="${productImage.filePath}">filePath</span></p></td>
+		<span th:text="|상품명: ${product.name}|" th:onclick="go_viewForm([[${product.productIdx}]])">name</span>
+		<p th:each="productImage : ${product.productImageList}"><span th:text="${productImageStat.index}+1"></span><span th:text="${productImage.filePath}">filePath</span></p>
 	</tr>
 	<div class="form-control">
 		<label for="id">아이디</label>

@@ -8,38 +8,26 @@
 </head>
 <th:block layout:fragment="custom-js">
 	<script type="text/javascript">
-		$(function() {
-			let imagePaths = [
-				"/images/poms/product/SOLEW_01.jpg",
-				"/images/poms/product/SOLEW_02.jpg",
-				"/images/poms/product/SOLEW_03.jpg",
-				"/images/poms/product/SOLEW_04.jpg",
-				"/images/poms/product/SOLEW_05.jpg",
-				"/images/poms/product/SOLEW_06.jpg",
-				"/images/poms/product/SOLEW_JP_01.jpg",
-				"/images/poms/product/SOLEW_JP_02.jpg",
-				"/images/poms/product/SOLEW_JP_03.jpg",
-				"/images/poms/product/SOLEW_JP_04.jpg"
-			];
-
-			// 이미지 그리드를 생성합니다.
-			let $imageGrid = $("#imageGrid");
-			let $row = $("<div class='row'></div>");
-			for (let i = 0; i < imagePaths.length; i++) {
-				let imagePath = imagePaths[i];
-				$row.append('<div class="imageContainer"><img src="' + imagePath + '"></div>');
-
-				// 6개의 이미지가 출력되었을 때 새로운 줄을 생성합니다.
-				if ((i + 1) % 6 === 0 || i === imagePaths.length - 1) {
-					$imageGrid.append($row);
-					$row = $("<div class='row'></div>");
-				}
-			}
+		$(function(){
+			//상품 상세 정보 조회
+			//cinit_view('/product/view', 'productIdx');
 		});
+
+		function fn_callback(callbackId, resData) {
+			//상품 상세 정보 조회
+			/*if (callbackId === 'view') {
+				let view = resData.body.view;
+				console.log('[##### 상품 상세 조회 결과 처리]\n', view);
+
+			} else{}*/
+		}
 	</script>
 	<style>
+		ul {
+            padding: 0;
+		}
         li, dl {
-            margi: 0;
+            margin: 0;
             padding: 0;
             list-style: none;
         }
@@ -52,9 +40,19 @@
             justify-content: flex-start;
         }
 
+		.jc-sb {
+			justify-content: space-between;;
+		}
+
         .ai-c {
             align-items: center;
         }
+
+		.btn-black {
+            border-color: #000;
+            background-color: #000;
+            color: #fff;
+		}
 
         .row {
             display: flex;
@@ -151,31 +149,30 @@
             height: 80px;
         }
 
-        .product-head .header-wrap {
-            position: relative;
-        }
+		.product-head .header-wrap {
+			display: flex;
+			flex-direction: column;
+		}
 
         .product-head .header-wrap .brand {
-            font-family: "ProximaNova-Semibold";
-            font-size: 24px;
-            color: #2e2e2e;
-            cursor: pointer;
-            width: auto;
-            min-height: auto;
-            margin: 0;
-            padding: 0 100px 8px 0;
-            line-height: 29px;
+			font-family: "ProximaNova-Semibold";
+			font-size: 24px;
+			color: #2e2e2e;
+			cursor: pointer;
+			width: auto;
+			min-height: auto;
+			margin: 0;
+			padding-bottom: 8px;
+			line-height: 29px;
         }
 
         .product-head .header-wrap .my-brand {
-            position: absolute;
-            top: 0;
-            right: 0;
-            font-size: 0;
+			width: 100px;
+			height: 30px;
         }
 
         .product-head .header-wrap .product-front {
-            position: relative;
+
         }
 
         .product-head .header-wrap .product-front .front {
@@ -194,49 +191,38 @@
             margin-top: 10px;
         }
 
-        .product-head .price-wrap {
-            position: relative;
-        }
-
-        .product-head .price {
-            border-top: 0;
-            padding-top: 20px;
-            padding-bottom: 14px;
-            border-bottom: 2px solid #000;
-            position: relative;
-        }
-
         .product-head dl {
             font-family: "ProximaNova-Regular", "Noto Sans KR";
             font-size: 13px;
-            padding: 15px 0;
+            padding: 3px 0;
+			display: flex;
         }
 
-        .product-head .price dt {
-            clear: both;
+        .product-head dt {
             height: 32px;
             line-height: 18px;
             padding: 7px 0;
             width: 125px;
             color: #333;
-            float: left;
             margin: 0;
         }
 
-        .product-head .price dd {
+        .product-head dd {
             height: 32px;
             line-height: 18px;
             padding: 7px 0;
-            float: left;
             margin: 0;
         }
 
-        .product-head .price .cupon em {
+        .product-head .price-wrap {
+        }
+
+        .product-head .price-wrap .cupon em {
             font-size: 18px;
             font-weight: bold;
         }
 
-        .product-head .price .discount-percent {
+        .product-head .price-wrap .discount-percent {
             color: #fa5500;
             font-size: 18px;
             font-weight: bold;
@@ -260,26 +246,85 @@
         }
 
         .product-head .benefit {
-            position: relative;
             border-bottom: 1px solid #e6e6e6;
         }
+
         .product-head .card-info-wrap {
-            font-family: "ProximaNova-Regular", "Noto Sans KR";
-            font-size: 13px;
-            padding: 15px 0;
         }
+
         .product-head .option {
-            display: block;
-            font-family: "ProximaNova-Regular", "Noto Sans KR";
-            font-size: 13px;
-            padding: 15px 0;
         }
+
         .product-head .button-wrap {
+		}
+
+        .product-head .button-wrap ul {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 660px;
+            width: 650px;
         }
+
+		.product-head .button-wrap ul li:not(.box-btn) {
+            flex: 1;
+            min-width: 250px;
+        }
+
+		.product-head .button-wrap ul .box-btn {
+            width: 70px;
+            height: 70px;
+        }
+
+		.product-head .button-wrap ul li button {
+            width: 100%;
+            height: 70px;
+            font-family: "ProximaNova-Semibold", "Noto Sans KR";
+            font-weight: 500;
+            line-height: 68px;
+            font-size: 20px;
+            border-color: #000;
+        }
+
+		.product-head .button-wrap ul li .btn-gift {
+            height: 70px;
+            width: 70px;
+            background: url(//static.wconcept.co.kr/web/images/product/svg/ico_prod_gift.svg) #fa5500 no-repeat center 10px;
+            background-size: 34px 34px;
+            text-align: center;
+
+
+		.product-head .button-wrap ul li .btn-gift span {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 500;
+            display: block;
+            padding-top: 40px;
+        }
+
+		.product-head .button-wrap ul li .btn-heart {
+            height: 70px;
+            width: 70px;
+            background: url(//static.wconcept.co.kr/web/images/product/svg/ico_prod_heart_off.svg) no-repeat center 10px / 38px;
+            border: solid 1px #ccc;
+            background-size: 34px 34px;
+        }
+
+		.product-head .button-wrap ul li .btn-heart p {
+            font-family: "ProximaNova-Semibold";
+            font-size: 13px;
+            line-height: 20px;
+            color: #7d7d7d;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 6px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .product-head .info {
+        }
+
 	</style>
 </th:block>
 <body>
@@ -333,26 +378,30 @@
 				</div>
 			</div>
 			<div class="right-content">
-				<form name="product-form" id="product-form">
+				<form name="productForm" id="productForm">
 					<div class="header-wrap">
-						<h2 class="brand">
-							<a>ZEROSTREET</a>
-						</h2>
-						<button type="button" class="my-brand">MY BRAND</button>
+						<div class="flex jc-sb">
+							<h2 class="brand">
+								<a th:text="${product.brand.name}">ZEROSTREET</a>
+							</h2>
+							<button type="button" class="my-brand">MY BRAND</button>
+						</div>
 						<div class="product-front">
 							<p class="front">[PRE-OPEN][~6/23까지]</p>
-							<h3 class="product-info">아이스 린넨 뒷 절개 자켓 / 그레이</h3>
+							<h3 class="product-info" th:text="${product.name}">아이스 린넨 뒷 절개 자켓 / 그레이</h3>
 							<!-- 공유 이미지-->
 							<ul></ul>
 							<!-- 공유 이미지-->
 						</div>
 					</div>
 					<div class="price-wrap">
-						<dl class="price">
+						<dl>
 							<dt>정상가</dt>
 							<dd>
-								<em>179,000</em>원
+								<em th:text="${product.price}">179,000</em>원
 							</dd>
+						</dl>
+						<dl>
 							<dt class="flex jc-fs ai-c">
 								<text>쿠폰적용가</text>
 								<!-- 물음표 이미지 -->
@@ -372,6 +421,8 @@
 						<dl>
 							<dt>신규회원</dt>
 							<dd>93,080원, 신규가입 시 <strong>20%</strong>쿠폰 (최대할인가)</dd>
+						</dl>
+						<dl>
 							<dt>추가혜택가</dt>
 							<dd>
 								<div>
@@ -391,108 +442,123 @@
 						</dl>
 						<button>추가혜택 더보기</button>
 					</div>
-					<dl class="card-info-wrap">
-						<dt>무이자 할부</dt>
-						<dd>
-							최대 5개월(
-							<em>23,270</em>
-							원 X 5개월)
-							<button>카드안내</button>
-						</dd>
-						<dt>포인트 적립</dt>
-						<dd>
-							<text>
-								<em>1,164</em>
-								p 적립
-							</text>
-							<button>포인트 안내</button>
-						</dd>
-						<dt>쇼핑가이드</dt>
-						<dd>
-							<span>쿠폰</span>
-							<span>예약</span>
-						</dd>
-					</dl>
-					<dl class="option">
-						<dt></dt>
-						<dd>
-							<div>
-								<button>사이즈 가이드</button>
-							</div>
-						</dd>
-						<dt>색상사이즈</dt>
-						<dd>
-							<select>
-								<option value="00"></option>
-								<option value="20954876" optionvalue="GRAY_S">GRAY_S</option>
-								<option value="20954877" optionvalue="GRAY_M">GRAY_M</option>
-							</select>
-							<div>
+					<div class="card-info-wrap">
+						<dl>
+							<dt>무이자 할부</dt>
+							<dd>
+								최대 5개월(
+								<em>23,270</em>
+								원 X 5개월)
+								<button>카드안내</button>
+							</dd>
+						</dl>
+						<dl>
+							<dt>포인트 적립</dt>
+							<dd>
+								<text>
+									<em>1,164</em>
+									p 적립
+								</text>
+								<button>포인트 안내</button>
+							</dd>
+						</dl>
+						<dl>
+							<dt>쇼핑가이드</dt>
+							<dd>
+								<span>쿠폰</span>
+								<span>예약</span>
+							</dd>
+						</dl>
+					</div>
+					<div class="option">
+						<dl>
+							<dt></dt>
+							<dd>
 								<div>
-									<span>선택해 주세요.</span>
+									<button>사이즈 가이드</button>
 								</div>
-								<ul>
-									<li>
-										<a>선택해주세요</a>
-									</li>
-									<li>
-										<a>GRAY_S</a>
-									</li>
-									<li>
-										<a>GRAY_M</a>
-									</li>
-								</ul>
-							</div>
-						</dd>
-					</dl>
-					<ul class="button-wrap">
-						<li>
-							<button type="button">바로구매</button>
-						</li>
-						<li>
-							<button type="button">쇼핑백 담기</button>
-						</li>
-						<li>
-							<button type="button">선물하기</button>
-						</li>
-						<!-- 좋아요 영역 -->
-						<li>
-							<button type="button">
-								<span>heart</span>
-								<p>6</p>
-							</button>
-						</li>
-						<!-- 좋아요 영역 -->
-					</ul>
-				</form>
-				<dl>
-					<dt>상품 요약 정보</dt>
-					<dd>
+							</dd>
+						</dl>
+						<dl>
+							<dt>색상사이즈</dt>
+							<dd>
+								<select>
+									<option value="00"></option>
+									<option value="20954876" optionvalue="GRAY_S">GRAY_S</option>
+									<option value="20954877" optionvalue="GRAY_M">GRAY_M</option>
+								</select>
+								<div>
+									<div>
+										<span>선택해 주세요.</span>
+									</div>
+									<ul>
+										<li>
+											<a>선택해주세요</a>
+										</li>
+										<li>
+											<a>GRAY_S</a>
+										</li>
+										<li>
+											<a>GRAY_M</a>
+										</li>
+									</ul>
+								</div>
+							</dd>
+						</dl>
+					</div>
+					<div class="button-wrap">
 						<ul>
 							<li>
-								<span>상품코드</span>
-								305918080
+								<button type="button">바로구매</button>
 							</li>
 							<li>
-								<span>소재</span>
-								RAYON 53 NYLON 27 TENCEL 14 LINEN 6 / MATCH:POLYESTER 100
+								<button type="button" class="btn-black">쇼핑백 담기</button>
 							</li>
-							<li>
-								<span>제조사/원산지</span>
-								(주)지엔케이트레이딩 / KOREA
+							<li class="box-btn">
+								<button type="button" class="btn-gift">
+									<span>선물하기</span>
+								</button>
 							</li>
-							<li>
-								<span>배송비</span>
-								무료
-								<p>(제주 : 3,000원/도서산간 : 3,000원)추가</p>
+							<!-- 좋아요 영역 -->
+							<li class="box-btn">
+								<button type="button" class="btn-heart">
+									<p>6</p>
+								</button>
 							</li>
-							<li>
-								<span>배송정보</span>
-								2024-06-21부터 순차출고 (결제완료고객)
-							</li>
+							<!-- 좋아요 영역 -->
 						</ul>
-					</dd>
-				</dl>
+					</div>
+				</form>
+				<div class="info">
+					<dl>
+						<dt>상품 요약 정보</dt>
+						<dd>
+							<ul>
+								<li>
+									<span>상품코드</span>
+									305918080
+								</li>
+								<li>
+									<span>소재</span>
+									RAYON 53 NYLON 27 TENCEL 14 LINEN 6 / MATCH:POLYESTER 100
+								</li>
+								<li>
+									<span>제조사/원산지</span>
+									(주)지엔케이트레이딩 / KOREA
+								</li>
+								<li>
+									<span>배송비</span>
+									무료
+									<p>(제주 : 3,000원/도서산간 : 3,000원)추가</p>
+								</li>
+								<li>
+									<span>배송정보</span>
+									2024-06-21부터 순차출고 (결제완료고객)
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
 			</div>
 		</div>
 		<!-- 상품 상단 -->
@@ -562,6 +628,9 @@
 		</div>
 		<!-- 배송 유의사항 -->
 	</div>
+	<form name="searchForm" id="searchForm">
+		<input type="hidden" name="productIdx" id="productIdx" th:value="${productIdx}">
+	</form>
 </th:block>
 </body>
 </html>

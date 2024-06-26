@@ -51,4 +51,9 @@ public class ProductService {
 				.map(ProductResponse::new)
 				.collect(Collectors.toList());
 	}
+
+	@Transactional
+	public ProductResponse view(Long productIdx){
+		return new ProductResponse(productRepository.findById(productIdx).get());
+	}
 }

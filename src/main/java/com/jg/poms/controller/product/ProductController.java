@@ -5,17 +5,17 @@ import com.jg.poms.core.http.ResponseVO;
 import com.jg.poms.dto.product.response.ProductResponse;
 import com.jg.poms.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequestMapping("/product")
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class ProductController {
 
 	private final ProductService productService;
@@ -39,5 +39,26 @@ public class ProductController {
 		return httpBuilder.resultForObjectList(productService.getCategoryProductList(categoryIdx));
 	}
 
+	/**
+	 * [상세 페이지 이동]
+	 *
+	 * @author ryugyunguoon
+	 */
+	@GetMapping("/view-form")
+	public String veiwForm(Model model, @RequestParam("productIdx") Long productIdx){
+		model.addAttribute("product", productService.view(productIdx));
+		return "/product/product_view";
+	}
+
+	/**
+	 * [상세 조회]
+	 *
+	 * @author ryugyunguoon
+	 */
+	@GetMapping("/view")
+	@ResponseBody
+	public ResponseVO view(@RequestParam("productIdx") Long productIdx){
+		return httpBuilder.resultForObject("view" ,productService.view(productIdx));
+	}
 
 }
