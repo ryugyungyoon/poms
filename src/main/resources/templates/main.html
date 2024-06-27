@@ -51,7 +51,7 @@
 	<div id="imageGrid"></div>
 	<h2>메인화면</h2>
 	<div th:each="product : ${productList}">
-		<span th:text="|상품명: ${product.name}|" th:onclick="go_viewForm([[${product.productIdx}]])">name</span>
+		<span th:text="|상품명: ${product.name}|" th:onclick="|go_viewForm(${product.productIdx})|">name</span>
 		<p th:each="productImage : ${product.productImageList}"><span th:text="${productImageStat.index}+1"></span>
 		<span th:text="${productImage.filePath}">filePath</span></p>
 	</div>

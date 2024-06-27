@@ -2,7 +2,6 @@ package com.jg.poms.controller.category;
 
 import com.jg.poms.core.http.HttpBuilder;
 import com.jg.poms.core.http.ResponseVO;
-import com.jg.poms.domain.category.CategoryRepository;
 import com.jg.poms.dto.category.response.CategoryResponse;
 import com.jg.poms.service.category.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +19,6 @@ public class CategoryController{
 	private final CategoryService categoryService;
 
 	private final HttpBuilder httpBuilder;
-
-	private final CategoryRepository categoryRepository;
 
 	/**
 	 * [리스트 페이지 이동]
@@ -50,7 +47,7 @@ public class CategoryController{
 	@ResponseBody
 	public ResponseVO getCategoryList() {
 		//return httpBuilder.resultForPagingList(categoryService.getCategoryList(), reqVO);
-		return httpBuilder.resultForObjectList(categoryRepository.findAll());
+		return httpBuilder.resultForObjectList(categoryService.getCategoryList());
 	}
 	/**
 	 * [현재 카테고리의 하위 카테고리 리스트 조회]
