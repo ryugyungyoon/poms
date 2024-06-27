@@ -11,11 +11,11 @@ function cinit_list(url, callbackId){
 }
 
 /**
- * [토비스 함수] 상세 정보 조회 요청
+ * [poms 함수] 상세 정보 조회 요청
  * ajax 요청
  * @author ryugyungyoon
  * @param url 요청 url
- * @param key 요청 파라메터
+ * @param key 요청 파라터
  * @returns {void}
  */
 function cinit_view(url, key){
