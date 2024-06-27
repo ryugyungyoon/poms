@@ -7,325 +7,347 @@
 	<title>POMS 상품 상세 페이지</title>
 </head>
 <th:block layout:fragment="custom-js">
-	<script type="text/javascript">
-		$(function(){
-			//상품 상세 정보 조회
-			//cinit_view('/product/view', 'productIdx');
-		});
+<script type="text/javascript">
+	$(function () {
+		//상품 상세 정보 조회
+		//cinit_view('/product/view', 'productIdx');
+	});
 
-		function fn_callback(callbackId, resData) {
-			//상품 상세 정보 조회
-			/*if (callbackId === 'view') {
-				let view = resData.body.view;
-				console.log('[##### 상품 상세 조회 결과 처리]\n', view);
+	function fn_callback(callbackId, resData) {
+		//상품 상세 정보 조회
+		/*if (callbackId === 'view') {
+			let view = resData.body.view;
+			console.log('[##### 상품 상세 조회 결과 처리]\n', view);
 
-			} else{}*/
-		}
-	</script>
-	<style>
-		ul {
-            padding: 0;
-		}
-        li, dl {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+		} else{}*/
+	}
+</script>
+<style>
+	ul {
+		padding: 0;
+	}
 
-        .flex {
-            display: flex;
-        }
+	li, dl {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 
-        .jc-fs {
-            justify-content: flex-start;
-        }
+	.flex {
+		display: flex;
+	}
 
-		.jc-sb {
-			justify-content: space-between;;
-		}
+	.jc-fs {
+		justify-content: flex-start;
+	}
 
-        .ai-c {
-            align-items: center;
-        }
+	.jc-sb {
+		justify-content: space-between;;
+	}
 
-		.btn-black {
-            border-color: #000;
-            background-color: #000;
-            color: #fff;
-		}
+	.ai-c {
+		align-items: center;
+	}
 
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+	.btn-black {
+		border-color: #000;
+		background-color: #000;
+		color: #fff;
+	}
 
-        .imageContainer {
-            width: 13vw; /* 한 줄에 6개씩 출력하기 위해 너비를 조절합니다. */
-            margin: 10px;
-            box-sizing: border-box; /* 가로 여백이 너비를 초과하지 않도록 설정합니다. */
-        }
+	.imageContainer img {
+		border: 1px solid #c6c6c6;
+		width: 100%;
+		height: auto;
+	}
 
-        .imageContainer img {
-            border: 1px solid #c6c6c6;
-            width: 100%;
-            height: auto;
-        }
+	.location {
+		margin-bottom: 20px;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		line-height: 16px;
+	}
 
-        .location {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            line-height: 16px;
-        }
+	.location > li {
+		podiyion: relative;
+		padding: 0 8px 0 0;
+		color: #9d9d9d;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		font-size: 13px;
+	}
 
-        .location > li {
-            podiyion: relative;
-            padding: 0 8px 0 0;
-            color: #9d9d9d;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            font-size: 13px;
-        }
+	.product {
+		position: relative;
+		width: 1240px;
+		margin-top: 20px;
+	}
 
-        .product {
-            position: relative;
-            width: 1240px;
-            margin-top: 20px;
-        }
+	.product-head {
+		display: flex;
+	}
 
-        .product-head {
-            display: flex;
-        }
+	.product-side {
+		padding-top: 40px;
+	}
 
-        .product-side {
-            padding-top: 40px;
-        }
+	.tab {
+		width: 100%;
+		border-bottom: 2px solid #000;
+	}
 
-        .tab {
-            width: 100%;
-            border-bottom: 2px solid #000;
-        }
+	.product .tab {
+		margin-top: 80px;
+	}
 
-        .product .tab {
-            margin-top: 80px;
-        }
-
-        .product-detail, product-qna, product-delivery{
-            margin-top: 60px;
-        }
-
-        .product-review {
-            margin-top: 50px;
-        }
-
-        .left-content {
-            width: 525px;
-        }
-
-        .right-content {
-            width: 650px;
-        }
-
-        .product-head .image-area {
-            margin-bottom: 30px;
-        }
-
-        .product-head .image-area .image-main {
-            width: 100%;
-            height: 700px;
-        }
-
-        .product-head .image-area .image-side {
-            margin-top: 20px;
-            height: 80px;
-            overflow: hidden;
-        }
-
-        .product-head .image-area .image-side img{
-            width: 60px;
-            height: 80px;
-        }
-
-		.product-head .header-wrap {
-			display: flex;
-			flex-direction: column;
-		}
-
-        .product-head .header-wrap .brand {
-			font-family: "ProximaNova-Semibold";
-			font-size: 24px;
-			color: #2e2e2e;
-			cursor: pointer;
-			width: auto;
-			min-height: auto;
-			margin: 0;
-			padding-bottom: 8px;
-			line-height: 29px;
-        }
-
-        .product-head .header-wrap .my-brand {
-			width: 100px;
-			height: 30px;
-        }
-
-        .product-head .header-wrap .product-front {
-
-        }
-
-        .product-head .header-wrap .product-front .front {
-            font-family: "ProximaNova-Regular", "Noto Sans KR";
-            font-size: 14px;
-            line-height: 20px;
-            color: #000;
-            padding-right: 30px;
-            margin-top: 12px;
-        }
-
-        .product-head .header-wrap .product-front .product-info {
-            font-family: "ProximaNova-Regular", "Noto Sans KR";
-            font-size: 14px;
-            color: #000;
-            margin-top: 10px;
-        }
-
-        .product-head dl {
-            font-family: "ProximaNova-Regular", "Noto Sans KR";
-            font-size: 13px;
-            padding: 3px 0;
-			display: flex;
-        }
-
-        .product-head dt {
-            height: 32px;
-            line-height: 18px;
-            padding: 7px 0;
-            width: 125px;
-            color: #333;
-            margin: 0;
-        }
-
-        .product-head dd {
-            height: 32px;
-            line-height: 18px;
-            padding: 7px 0;
-            margin: 0;
-        }
-
-        .product-head .price-wrap {
-        }
-
-        .product-head .price-wrap .cupon em {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .product-head .price-wrap .discount-percent {
-            color: #fa5500;
-            font-size: 18px;
-            font-weight: bold;
-            margin-left: 6px;
-        }
-
-        .product-head .down-cupon {
-            position: absolute;
-            height: 38px;
-            padding: 0 31px 0 15px;
-            background: #fff;
-            color: #000;
-            font-family: "ProximaNova-Regular", "Noto Sans KR";
-            font-size: 14px;
-            text-align: left;
-            vertical-align: top;
-            border: 1px solid #000;
-            line-height: 36px;
-            bottom: 20px;
-            right: 0;
-        }
-
-        .product-head .benefit {
-            border-bottom: 1px solid #e6e6e6;
-        }
-
-        .product-head .card-info-wrap {
-        }
-
-        .product-head .option {
-        }
-
-        .product-head .button-wrap {
-		}
-
-        .product-head .button-wrap ul {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 650px;
-        }
-
-		.product-head .button-wrap ul li:not(.box-btn) {
-            flex: 1;
-            min-width: 250px;
-        }
-
-		.product-head .button-wrap ul .box-btn {
-            width: 70px;
-            height: 70px;
-        }
-
-		.product-head .button-wrap ul li button {
-            width: 100%;
-            height: 70px;
-            font-family: "ProximaNova-Semibold", "Noto Sans KR";
-            font-weight: 500;
-            line-height: 68px;
-            font-size: 20px;
-            border-color: #000;
-        }
-
-		.product-head .button-wrap ul li .btn-gift {
-            height: 70px;
-            width: 70px;
-            background: url(//static.wconcept.co.kr/web/images/product/svg/ico_prod_gift.svg) #fa5500 no-repeat center 10px;
-            background-size: 34px 34px;
-            text-align: center;
+	.product-detail, product-qna, product-delivery {
+		margin-top: 60px;
+	}
 
 
-		.product-head .button-wrap ul li .btn-gift span {
-            font-size: 13px;
-            color: #fff;
-            font-weight: 500;
-            display: block;
-            padding-top: 40px;
-        }
+	.left-content {
+		width: 525px;
+	}
 
-		.product-head .button-wrap ul li .btn-heart {
-            height: 70px;
-            width: 70px;
-            background: url(//static.wconcept.co.kr/web/images/product/svg/ico_prod_heart_off.svg) no-repeat center 10px / 38px;
-            border: solid 1px #ccc;
-            background-size: 34px 34px;
-        }
+	.right-content {
+		width: 650px;
+	}
 
-		.product-head .button-wrap ul li .btn-heart p {
-            font-family: "ProximaNova-Semibold";
-            font-size: 13px;
-            line-height: 20px;
-            color: #7d7d7d;
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 6px;
-            margin: 0;
-            padding: 0;
-        }
+	.product-head .image-area {
+		margin-bottom: 30px;
+	}
 
-        .product-head .info {
-        }
+	.product-head .image-area .image-main {
+		width: 100%;
+		height: 700px;
+	}
 
-	</style>
+	.product-head .image-area .image-side {
+		margin-top: 20px;
+		height: 80px;
+		overflow: hidden;
+	}
+
+	.product-head .image-area .image-side img {
+		width: 60px;
+		height: 80px;
+	}
+
+	.product-head .header-wrap {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.product-head .header-wrap .brand {
+		font-family: "ProximaNova-Semibold";
+		font-size: 24px;
+		color: #2e2e2e;
+		cursor: pointer;
+		width: auto;
+		min-height: auto;
+		margin: 0;
+		padding-bottom: 8px;
+		line-height: 29px;
+	}
+
+	.product-head .header-wrap .my-brand {
+		width: 100px;
+		height: 30px;
+	}
+
+	.product-head .header-wrap .product-front {
+
+	}
+
+	.product-head .header-wrap .product-front .front {
+		font-family: "ProximaNova-Regular", "Noto Sans KR";
+		font-size: 14px;
+		line-height: 20px;
+		color: #000;
+		padding-right: 30px;
+		margin-top: 12px;
+	}
+
+	.product-head .header-wrap .product-front .product-info {
+		font-family: "ProximaNova-Regular", "Noto Sans KR";
+		font-size: 14px;
+		color: #000;
+		margin-top: 10px;
+	}
+
+	.product-head dl {
+		font-family: "ProximaNova-Regular", "Noto Sans KR";
+		font-size: 13px;
+		padding: 3px 0;
+		display: flex;
+	}
+
+	.product-head dt {
+		height: 32px;
+		line-height: 18px;
+		padding: 7px 0;
+		width: 125px;
+		color: #333;
+		margin: 0;
+	}
+
+	.product-head dd {
+		height: 32px;
+		line-height: 18px;
+		padding: 7px 0;
+		margin: 0;
+	}
+
+	.product-head .price-wrap {
+	}
+
+	.product-head .price-wrap .cupon em {
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.product-head .price-wrap .discount-percent {
+		color: #fa5500;
+		font-size: 18px;
+		font-weight: bold;
+		margin-left: 6px;
+	}
+
+	.product-head .down-cupon {
+		position: absolute;
+		height: 38px;
+		padding: 0 31px 0 15px;
+		background: #fff;
+		color: #000;
+		font-family: "ProximaNova-Regular", "Noto Sans KR";
+		font-size: 14px;
+		text-align: left;
+		vertical-align: top;
+		border: 1px solid #000;
+		line-height: 36px;
+		bottom: 20px;
+		right: 0;
+	}
+
+	.product-head .benefit {
+		border-bottom: 1px solid #e6e6e6;
+	}
+
+	.product-head .card-info-wrap {
+	}
+
+	.product-head .option {
+	}
+
+	.product-head .button-wrap {
+	}
+
+	.product-head .button-wrap ul {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 650px;
+	}
+
+	.product-head .button-wrap ul li:not(.box-btn) {
+		flex: 1;
+		min-width: 250px;
+	}
+
+	.product-head .button-wrap ul .box-btn {
+		width: 70px;
+		height: 70px;
+	}
+
+	.product-head .button-wrap ul li button {
+		width: 100%;
+		height: 70px;
+		font-family: "ProximaNova-Semibold", "Noto Sans KR";
+		font-weight: 500;
+		line-height: 68px;
+		font-size: 20px;
+		border-color: #000;
+	}
+
+	.product-head .button-wrap ul li .btn-gift {
+		height: 70px;
+		width: 70px;
+		background: url(//static.wconcept.co.kr/web/images/product/svg/ico_prod_gift.svg) #fa5500 no-repeat center 10px;
+		background-size: 34px 34px;
+		text-align: center;
+	}
+
+
+	.product-head .button-wrap ul li .btn-gift span {
+		font-size: 13px;
+		color: #fff;
+		font-weight: 500;
+		display: block;
+		padding-top: 40px;
+	}
+
+	.product-head .button-wrap ul li .btn-heart {
+		height: 70px;
+		width: 70px;
+		background: url(//static.wconcept.co.kr/web/images/product/svg/ico_prod_heart_off.svg) no-repeat center 10px / 38px;
+		border: solid 1px #ccc;
+		background-size: 34px 34px;
+	}
+
+	.product-head .button-wrap ul li .btn-heart p {
+		font-family: "ProximaNova-Semibold";
+		font-size: 13px;
+		line-height: 20px;
+		color: #7d7d7d;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 6px;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* 리뷰 탭 css */
+	.product-review {
+		width: 100%;
+		height: auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.product-review__star {
+        width: calc(100%*0.1);
+		text-align: center;
+		font-size: 16px;
+	}
+
+	.product-review__content {
+        width: calc(100%*0.7);
+	}
+
+    .product-review__content-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+	.product-review__info {
+        width: calc(100%*0.2);
+		display: flex;
+		justify-content: flex-end;
+		color: #777;
+	}
+
+    .product-review__info-userid {
+		margin-right: 20px;
+	}
+
+</style>
 </th:block>
 <body>
 <th:block layout:fragment="main-content">
@@ -359,17 +381,20 @@
 					<div class="image-side">
 						<ul class="flex">
 							<li>
-								<a data-image="/images/poms/product/SOLEW_02.jpg" data-zoom-image="/images/poms/product/SOLEW_02.jpg">
+								<a data-image="/images/poms/product/SOLEW_02.jpg"
+								   data-zoom-image="/images/poms/product/SOLEW_02.jpg">
 									<img src="/images/poms/product/SOLEW_02.jpg">
 								</a>
 							</li>
 							<li>
-								<a data-image="/images/poms/product/SOLEW_03.jpg" data-zoom-image="/images/poms/product/SOLEW_03.jpg">
+								<a data-image="/images/poms/product/SOLEW_03.jpg"
+								   data-zoom-image="/images/poms/product/SOLEW_03.jpg">
 									<img src="/images/poms/product/SOLEW_03.jpg">
 								</a>
 							</li>
 							<li>
-								<a data-image="/images/poms/product/SOLEW_04.jpg" data-zoom-image="/images/poms/product/SOLEW_04.jpg">
+								<a data-image="/images/poms/product/SOLEW_04.jpg"
+								   data-zoom-image="/images/poms/product/SOLEW_04.jpg">
 									<img src="/images/poms/product/SOLEW_04.jpg">
 								</a>
 							</li>
@@ -598,14 +623,29 @@
 		-->
 		<!-- 상품 상세 설명 -->
 		<!-- 리뷰 tab -->
-		<ul class="tab" id="review-tab">
-			리뷰 탭 영역
+		<ul class="tab" id="review-tab" th:text="|REVIEW (${#lists.size(product.productReviewList)})|">
 		</ul>
 		<!-- 리뷰 tab -->
 		<!-- 리뷰 -->
-		<div class="product-review">
-			상품 리뷰 영역
-		</div>
+		<th:block th:each="review : ${product.productReviewList}">
+			<div class="product-review">
+				<p class="product-review__star">
+					<th:block th:each="num: ${#numbers.sequence(1,review.starRating)}">
+						★
+					</th:block>
+				</p>
+				<p class="product-review__content">
+					<span class="product-review__content-img" th:each="reviewImage : ${review.reviewImageList}">
+						<img th:src="@{${reviewImage.filePath}}" width="100" alt="상품 리뷰 이미지"/>
+					</span>
+					<span class="product-review__content-text" th:text="${review.content}"></span>
+				</p>
+				<p class="product-review__info">
+					<span class="product-review__info-userid" th:text="${review.userId}"></span>
+					<span class="product-review__info-regdate" th:text="${#strings.substring(review.registrationDate,0,10)}"></span>
+				</p>
+			</div>
+		</th:block>
 		<!-- 리뷰 -->
 		<!-- qna tab -->
 		<ul class="tab" id="qna-tab">

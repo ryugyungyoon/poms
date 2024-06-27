@@ -19,6 +19,12 @@
 		});
 
 	});
+
+	//상세 페이지 이동 함수
+	function go_viewForm(idx) {
+		location.href = '/product/view-form?productIdx=' + idx;
+	}
+
 	//요청 결과 처리 ajax callback
 	function fn_callback(callbackId, resData){
 		if(callbackId === 'productList') { //여성 의류 카테고리에 해당하는 상품 리스트 조회
@@ -30,7 +36,7 @@
 
 				htmlStr += '<ul class="product-list__ul">';
 					for(i in productList) {
-						htmlStr += '	<li class="product-list__li" id="'+ productList[i].productIdx +'">';
+						htmlStr += '	<li class="product-list__li" id="'+ productList[i].productIdx +'" onclick="go_viewForm(' + productList[i].productIdx + ')">';
 						htmlStr += '		<img class="product-list__img" src="'+productList[i].thumbnailImageFilePath+'.jpg"></img>';
 						htmlStr += '		<div class="product-list__brand-name">' +productList[i].brand.name+ '</div>';
 						//좋아요 버튼 위치만 잡아둠

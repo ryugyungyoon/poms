@@ -1,5 +1,6 @@
 package com.jg.poms.domain.review;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jg.poms.domain.product.Product;
 import com.jg.poms.domain.user.User;
 import jakarta.persistence.*;
@@ -17,7 +18,9 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long reviewIdx = null;
 
-	private Long starRating;
+	private String content;
+
+	private int starRating;
 
 	@Column(length = 1)
 	private boolean deleteYn;
@@ -32,7 +35,7 @@ public class Review {
 	private Product product;
 
 	//리뷰 이미지와 연관 관계 설정
-	@OneToMany(mappedBy = "reivew",cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "review",cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ReviewImage> reviewImageList = new ArrayList<>();
 
 	//유저와 연관 관계 설정

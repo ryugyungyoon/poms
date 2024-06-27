@@ -1,12 +1,13 @@
 package com.jg.poms.domain.user;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.jg.poms.domain.review.Review;
 import com.jg.poms.dto.user.request.UserCreateRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -42,6 +43,10 @@ public class User {
 	private LocalDateTime modifyDate;
 
 	private String role;
+
+	//리뷰와 연관 관계 설정
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Review> userReivewList;
 
     /*
     @Enumerated(EnumType.STRING)

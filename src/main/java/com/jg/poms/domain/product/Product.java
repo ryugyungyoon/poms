@@ -3,6 +3,7 @@ package com.jg.poms.domain.product;
 import com.jg.poms.domain.brand.Brand;
 import com.jg.poms.domain.category.Category;
 import com.jg.poms.domain.product.productimage.ProductImage;
+import com.jg.poms.domain.review.Review;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +45,10 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "category_idx")
 	private Category category;
+
+	//리뷰와 연관 관계 설정
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> productReviewList = new ArrayList<>();
 
 	//JPA 사용을 위한 기본생성자
 	public Product() {

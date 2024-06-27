@@ -6,6 +6,8 @@ import com.jg.poms.domain.product.Product;
 import com.jg.poms.domain.product.ProductRepository;
 import com.jg.poms.domain.product.productimage.ProductImage;
 import com.jg.poms.domain.product.productimage.ProductImageRepository;
+import com.jg.poms.domain.review.Review;
+import com.jg.poms.domain.review.ReviewImage;
 import com.jg.poms.dto.product.response.ProductResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

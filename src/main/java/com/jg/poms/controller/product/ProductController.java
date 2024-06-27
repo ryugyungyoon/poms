@@ -47,7 +47,9 @@ public class ProductController {
 	 */
 	@GetMapping("/view-form")
 	public String veiwForm(Model model, @RequestParam("productIdx") Long productIdx){
-		model.addAttribute("product", productService.view(productIdx));
+		ProductResponse productResponse = productService.view(productIdx);
+		model.addAttribute("product", productResponse);
+		httpBuilder.resultMake(productResponse);
 		return "/product/product_view";
 	}
 
