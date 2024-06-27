@@ -19,16 +19,6 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productIdx = null;
 
-	//브랜드와 연관 관계 설정
-	@ManyToOne
-	@JoinColumn(name = "brand_idx")
-	private Brand brand;
-
-	//카테고리와 연관 관계 설정
-	@ManyToOne
-	@JoinColumn(name = "category_idx")
-	private Category category;
-
 	private String name;
 
 	private String code;
@@ -41,16 +31,19 @@ public class Product {
 
 	private LocalDateTime modifyDate;
 
+	//브랜드와 연관 관계 설정
+	@ManyToOne
+	@JoinColumn(name = "brand_idx")
+	private Brand brand;
+
 	//상품 이미지와 연관 관계 설정
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ProductImage> productImageList = new ArrayList<>();
 
-	public void setProductImage(List<ProductImage> productImageList) {
-		this.productImageList = productImageList;
-		for(ProductImage productImage : productImageList){
-            productImage.setProduct(this);
-        }
-	}
+	//카테고리와 연관 관계 설정
+	@ManyToOne
+	@JoinColumn(name = "category_idx")
+	private Category category;
 
 	//JPA 사용을 위한 기본생성자
 	public Product() {

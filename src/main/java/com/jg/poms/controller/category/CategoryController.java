@@ -2,6 +2,7 @@ package com.jg.poms.controller.category;
 
 import com.jg.poms.core.http.HttpBuilder;
 import com.jg.poms.core.http.ResponseVO;
+import com.jg.poms.domain.category.CategoryRepository;
 import com.jg.poms.dto.category.response.CategoryResponse;
 import com.jg.poms.service.category.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,8 @@ public class CategoryController{
 
 	private final HttpBuilder httpBuilder;
 
+	private final CategoryRepository categoryRepository;
+
 	/**
 	 * [리스트 페이지 이동]
 	 *
@@ -27,29 +30,27 @@ public class CategoryController{
 	 */
 	@GetMapping("{categoryIdx}/list-form")
 	public String listForm(Model model, @PathVariable(value="categoryIdx") Long categoryIdx) {
+		//현재 카테고리의 하위 카테고리 리스트 조회
 		List<CategoryResponse> subCategoryList;
-		String pageUrl = "";
 
-		//카테고리 별 페이지 반환
-		if(categoryIdx == 4){
-			subCategoryList = categoryService.getSubCategoryList(categoryIdx);
-			model.addAttribute("subCategoryList", subCategoryList);
-			pageUrl = "/menu/category/women/category_women_list";
-		}
+		subCategoryList = categoryService.getSubCategoryList(categoryIdx);
+
+		model.addAttribute("subCategoryList", subCategoryList);
+		model.addAttribute("categoryIdx", categoryIdx);
 
 		//model.addAttribute("searchForm", searchForm);
-		return pageUrl;
+		return "/menu/category/women/category_list";
 	}
 	/**
 	 * [카테고리 전체 리스트 조회]
 	 *
 	 * @author zisooya
 	 */
-	@PostMapping("women/listd")
+	@PostMapping("all/list")
 	@ResponseBody
 	public ResponseVO getCategoryList() {
 		//return httpBuilder.resultForPagingList(categoryService.getCategoryList(), reqVO);
-		return httpBuilder.resultForObjectList(categoryService.getCategoryList());
+		return httpBuilder.resultForObjectList(categoryRepository.findAll());
 	}
 	/**
 	 * [현재 카테고리의 하위 카테고리 리스트 조회]

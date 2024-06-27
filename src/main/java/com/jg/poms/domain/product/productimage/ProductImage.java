@@ -17,12 +17,6 @@ public class ProductImage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productImageIdx = null;
 
-	//상품과 연관 관계 설정
-	@ManyToOne
-	@JoinColumn(name="product_idx")
-	@JsonIgnore
-	private Product product;
-
 	private String productImageType;
 
 	private String filePath;
@@ -35,16 +29,11 @@ public class ProductImage {
 
 	private LocalDateTime modifyDate;
 
-	public ProductImage(){}
+	//상품과 연관 관계 설정
+	@ManyToOne
+	@JoinColumn(name="product_idx")
+	@JsonIgnore
+	private Product product;
 
-	public ProductImage(Long productImageIdx, Product product, String productImageType, String filePath, String displayOrder, Boolean deleteYn, LocalDateTime registrationDate, LocalDateTime modifyDate) {
-		this.productImageIdx = productImageIdx;
-		this.product = product;
-		this.productImageType = productImageType;
-		this.filePath = filePath;
-		this.displayOrder = displayOrder;
-		this.deleteYn = deleteYn;
-		this.registrationDate = registrationDate;
-		this.modifyDate = modifyDate;
-	}
+	public ProductImage(){}
 }
