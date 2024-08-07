@@ -1,23 +1,14 @@
-#?? ??
 server:
   port: 18080
 
+#공통 설정
 spring:
-  #타임리프 설정
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
     suffix: .html
-  #DB 설정
   datasource:
-    #url: jdbc:mysql://121.162.18.38:3306/poms?characterEncoding=UTF-8&serverTimezone=UTC&allowMultiQueries=true&useCursorFetch=true&fetchSize=1000
-    #username: poms
-    password: 1234
-    url: jdbc:mysql://localhost/poms?characterEncoding=UTF-8&serverTimezone=UTC&allowMultiQueries=true&useCursorFetch=true&fetchSize=1000
-    username: "root"
-    #password: "0000"
     driver-class-name: com.mysql.cj.jdbc.Driver
-  #JPA 설정
   jpa:
     hibernate:
       ddl-auto: none
@@ -26,7 +17,6 @@ spring:
         show_sql: true
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
-  # message 설정
   messages:
     cache-duration: -1
     basename: messages/message
@@ -35,6 +25,27 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
-
 logging:
   config: classpath:log4j2.yml
+
+#===================local server===================
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: ENC(v0wdL0P0VUbR4SWl3SVjUU2h9BO3yhCBIMw0HlACGqutWqnQt3l/DVZZxuGI254+kT3sV0SOoGg+wjpWkEAMnflv0FtKxGxdjA+PCAX2VVHWbKDSoBqZUwY5avVslPxe3PXKUJAOdWfQ7Bbp4UE2kp/y9XJxniWaFYSD6htTC9XlEnAbSMfnLOXzPv89ZAlW)
+    username: ENC(SEALWx3gBGg525YEKIVmQA==)
+    password: ENC(ypeuuLZsd3hBE5tXtEZK/g==)
+
+#===================prod server===================
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: ENC(SH5ftMS8/TNAr7O33kkjpQ5Z++8+gzJ+z+In1YRgrUm8wdGCzG3rLrNAWYrTfS9E/3qZMoUL3wk3VS2yxID4C7JwA5yYNIfUCOVk6RPg4myAxXjeqFKdxxyQvL5k5G3x6SxX+zZmSS73T/k8WTjZEemAStYZdlsKAGfiCRAZ1lzzEZUu7m0XdjUI7I0H340m)
+    username: ENC(SEALWx3gBGg525YEKIVmQA==)
+    password: ENC(VmVkegQnmEJr9rVmNAkcJjW8AjfDh0da)

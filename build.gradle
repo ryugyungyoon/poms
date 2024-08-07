@@ -39,8 +39,16 @@ dependencies {
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5-jakarta'
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
 }
 
+//프로젝트의 테스트를 실행하는 기본 작업
 tasks.named('test') {
 	useJUnitPlatform()
+
+	//systemProperty: 키, 값 쌍을 인자로 테스트 수행 JVM의 시스템 프라퍼티 지정하는 메소드
+	//findProperty를 통해 '-P' 이하로 입력된 속성을 찾아서 JVM의 시스템 프로퍼티로 지정해줌
+	//systemProperty 'jasypt.encryptor.password', findProperty('jasypt.encryptor.password')
 }
+
+
