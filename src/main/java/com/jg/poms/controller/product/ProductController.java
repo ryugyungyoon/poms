@@ -22,7 +22,7 @@ public class ProductController {
 
 	private final HttpBuilder httpBuilder;
 
-	@PostMapping("/all/list")
+	@PostMapping("all/list")
 	@ResponseBody
 	public List<ProductResponse> getProductList(){
 		return productService.getProductList();
@@ -45,10 +45,10 @@ public class ProductController {
 	 *
 	 * @author ryugyunguoon
 	 */
-	@GetMapping("/view-form")
+	@GetMapping("view-form")
 	public String veiwForm(Model model, @RequestParam("productIdx") Long productIdx){
 		model.addAttribute("product", productService.view(productIdx));
-		return "/product/product_view";
+		return "product/product_view";
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class ProductController {
 	 *
 	 * @author ryugyunguoon
 	 */
-	@GetMapping("/view")
+	@GetMapping("view")
 	@ResponseBody
 	public ResponseVO view(@RequestParam("productIdx") Long productIdx){
 		return httpBuilder.resultForObject("view" ,productService.view(productIdx));
