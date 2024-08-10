@@ -38,27 +38,14 @@ spring:
     username: ENC(SEALWx3gBGg525YEKIVmQA==)
     password: ENC(ypeuuLZsd3hBE5tXtEZK/g==)
 
-#===================prod-1 server===================
+#===================prod server===================
 ---
 server:
   port: 18080
 spring:
   config:
     activate:
-      on-profile: prod-1
-  datasource:
-    url: ENC(zMBfwwoa6JO3PunRBPynfHABO8skHvY0N4eDrbK8rEGqxGMsHtScYbJIGlxatEl/TU9QCGrLlA80LR76+OHnPuslApkGTrIbYzz0Na1ubl8d9CboQCoJi+KLzd2aTLApZBOToqbCJTB/R/NvbdtazkyMeaHPbcBlC0foskYN48/oVTjSFhMybi5EyC3virNm)
-    username: ENC(Ojjh12KU0wasDf9l0zb9MQ==)
-    password: ENC(VmVkegQnmEJr9rVmNAkcJjW8AjfDh0da)
-
-#===================prod-2 server===================
----
-server:
-  port: 28080
-spring:
-  config:
-    activate:
-      on-profile: prod-2
+      on-profile: prod
   datasource:
     url: ENC(zMBfwwoa6JO3PunRBPynfHABO8skHvY0N4eDrbK8rEGqxGMsHtScYbJIGlxatEl/TU9QCGrLlA80LR76+OHnPuslApkGTrIbYzz0Na1ubl8d9CboQCoJi+KLzd2aTLApZBOToqbCJTB/R/NvbdtazkyMeaHPbcBlC0foskYN48/oVTjSFhMybi5EyC3virNm)
     username: ENC(Ojjh12KU0wasDf9l0zb9MQ==)
