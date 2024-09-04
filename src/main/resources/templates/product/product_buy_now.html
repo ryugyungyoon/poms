@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{fragments/default-layout}">
+<head>
+	<title>POMS 상품 바로 구매 페이지</title>
+</head>
+<th:block layout:fragment="custom-js">
+<style>
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	.location {
+		margin-bottom: 20px;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		line-height: 16px;
+	}
+
+	.location > li {
+		podiyion: relative;
+		padding: 0 8px 0 0;
+		color: #9d9d9d;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		font-size: 13px;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: separate;
+		border-top: 2px solid #171717;
+		border-bottom: 1px solid #171717;
+		table-layout: fixed;
+		margin-bottom: 60px;
+		border-spacing: 0;
+	}
+
+	table th {
+		height: 68px;
+		padding-left: 43px;
+		border-color: transparent;
+		border: none;
+		color: #333;
+	}
+
+	table td {
+		border-color: #e9e9e9;
+		border: none;
+		color: #000;
+		font-size: 14px;
+		word-break: break-all;
+		background-clip: padding-box;
+	}
+
+	table td input {
+		height: 40px;
+		line-height: 38px;
+		padding-left: 20px;
+		border: none;
+		background-color: #f2f2f2;
+		border: 1px solid #f2f2f2;
+		font-size: 14px;
+		outline: none;
+	}
+
+	.payment_wrap .payment_info .select_billing {
+		padding-left: 68px;
+		margin-bottom: 16px;
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	.payment_wrap .payment_info .select_billing li input[type="button"]{
+		position: relative;
+		font-size: 14px;
+		line-height: 40px;
+		color: #000;
+		background: #fff;
+		border: 1px solid #d9d9d9;
+		padding: 0 32px;
+	}
+
+	.payment_wrap .payment_info .select_billing li input[type="button"].active {
+		color: #fff;
+		background: #000;
+		border-color: #000;
+	}
+
+	.payment_wrap .payment_info .busi_wrap {
+        border-bottom: 1px dotted #d9d9d9;
+	}
+
+	.payment_wrap .payment_info .busi_wrap select {
+		width: 265px;
+		outline-style: none;
+		outline: none;
+		height: 40px;
+		background-color: #f2f2f2;
+		border: 1px solid #f2f2f2;
+		line-height: 38px;
+		color: #010101;
+		font-size: 14px;
+		text-indent: 20px;
+		position: relative;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.payment_wrap .payment_info .busi_wrap select option {
+		display: block;
+		height: 38px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		padding-right: 25.5px;
+	}
+
+	.payment_wrap .payment_info .busi_wrap .select_group {
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+		border-bottom: 1px dotted #d9d9d9;
+	}
+
+	.payment_wrap .payment_info .busi_wrap ul {
+		padding-right: 50px;
+	}
+
+	.payment_wrap .payment_info .busi_wrap ul li {
+		position: relative;
+		padding-left: 15px;
+		color: #666;
+		line-height: 22px;
+	}
+
+	.payment_wrap .payment_info .busi_wrap ul li:before {
+		position: absolute;
+		top: 10px;
+		left: 0;
+		width: 5px;
+		height: 1px;
+		background: #666;
+		content: '';
+	}
+</style>
+<script type="text/javascript">
+	$(function () {
+
+	});
+
+</script>
+</th:block>
+<body>
+<th:block layout:fragment="main-content">
+	<h1>주문/결제</h1>
+	<!-- location -->
+	<ul class="location" id="product-location">
+		<li>
+			쇼핑백
+		</li>
+		<li>
+			주문결제
+		</li>
+		<li>
+			주문완료
+		</li>
+	</ul>
+	<!-- location -->
+	<form>
+		<div>
+			<h2>주문자 정보</h2>
+			<table>
+				<colgroup>
+					<col style="width:230px">
+				</colgroup>
+				<tbody>
+					<tr>
+						<th>주문하시는 분</th>
+						<td>류경윤</td>
+					</tr>
+					<tr>
+						<th>휴대폰번호</th>
+						<td>01099596654</td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td>alslehs@gmail.com</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<h2>배송지 정보</h2>
+			<table>
+				<colgroup>
+					<col style="width:230px">
+				</colgroup>
+				<tbody>
+					<tr>
+						<th>배송지 선택</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>받으시는 분</th>
+						<td>류경윤</td>
+					</tr>
+					<tr>
+						<th>휴대폰 번호</th>
+						<td>01099596654</td>
+					</tr>
+					<tr>
+						<th>배송 주소</th>
+						<td>
+							<input type="text">
+							<input type="text">
+							<input type="text">
+						</td>
+					</tr>
+					<tr>
+						<th>배송 메세지</th>
+						<td>
+							<input type="text">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<h2>주문상품</h2>
+			<table>
+				<colgroup>
+					<col style="width:115px">
+					<col style="width:150px">
+					<col style="width:135px">
+					<col style="width:150px">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>상품정보</th>
+						<th>수량</th>
+						<th>가격</th>
+						<th>총 상품 금액</th>
+						<th>배송비</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div></div>
+							<div></div>
+						</td>
+						<td>1</td>
+						<td>
+							<div></div>
+						</td>
+						<td><strong>116,350</strong></td>
+						<td>무료배송</td>
+					</tr>
+				</tbody>
+			</table>
+			<ul>
+				<li>* 제주/도서산간 지역의 경우 추가 배송비가 발생할 수 있습니다.</li>
+			</ul>
+		</div>
+		<div class="payment_wrap">
+			<h2>결제 수단</h2>
+			<!-- 일반 결제 -->
+			<div class="payment_info">
+				<input type="radio" id="generalPayment">
+				<label for="generalPayment">일반결제</label>
+			</div>
+			<div class="payment_info">
+				<ul class="select_billing">
+					<li><input type="button" class="active" value="신용카드"></li>
+					<li><input type="button" value="간편결제"></li>
+					<li><input type="button" value="가상계좌"></li>
+					<li><input type="button" value="휴대폰결제"></li>
+				</ul>
+				<div class="busi_wrap">
+					<h4>신용카드</h4>
+					<div class="cotents">
+						<div class="select_group">
+							<select>
+								<option value="">카드선택</option>
+								<option value="">비씨카드</option>
+								<option value="">국민카드</option>
+								<option value="">삼성카드</option>
+								<option value="">현대카드</option>
+								<option value="">롯데카드</option>
+								<option value="">신한카드</option>
+								<option value="">하나카드</option>
+								<option value="">우리카드</option>
+								<option value="">외환카드</option>
+								<option value="">NH카드</option>
+							</select>
+							<select>
+								<option value="">할부 선택</option>
+								<option value="">일시불</option>
+								<option value="">2개월</option>
+								<option value="">3개월</option>
+								<option value="">4개월</option>
+								<option value="">5개월</option>
+								<option value="">6개월</option>
+								<option value="">7개월</option>
+								<option value="">8개월</option>
+								<option value="">9개월</option>
+								<option value="">10개월</option>
+								<option value="">11개월</option>
+								<option value="">12개월</option>
+							</select>
+						</div>
+						<ul>
+							<li>할부 최소 금액은 5만원이며 30만원 이상 결제 시에  카드사에 따라 공인인증 사용이 요구될 수 있습니다.</li>
+							<li>청구할인은 카드사에서 제공하며, 결제대금의 청구 시점에 차감 청구되는 할인 방식입니다.</li>
+							<li>수협, 광주, 전북JB, MG 새마을, 우체국, 저축은행, 산업, 제주, 신협, 현대증권카드는 사용할 수 없습니다.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="busi_wrap"></div>
+				<div class="busi_wrap"></div>
+				<div class="busi_wrap"></div>
+			</div>
+		</div>
+	</form>
+</th:block>
+</body>
+</html>

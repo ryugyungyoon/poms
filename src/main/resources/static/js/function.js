@@ -110,3 +110,15 @@ function fn_callback(callbackId, resData){
 	}
 	else{}
 }
+
+/**
+ * [이벤트 함수] 검색조건 Form 전송하기
+ * @author ryugyungyoon
+ * @param url : 요청 url
+ * @returns {void}
+ */
+function cfn_searchFormSubmit(url){
+	$('#searchForm').attr('method', 'POST');
+	$('#searchForm').attr('action', url);
+	$('#searchForm').submit();
+}

@@ -2,6 +2,7 @@ package com.jg.poms.controller.product;
 
 import com.jg.poms.core.http.HttpBuilder;
 import com.jg.poms.core.http.ResponseVO;
+import com.jg.poms.dto.product.request.ProductBuyNowRequest;
 import com.jg.poms.dto.product.response.ProductResponse;
 import com.jg.poms.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -62,4 +63,14 @@ public class ProductController {
 		return httpBuilder.resultForObject("view" ,productService.view(productIdx));
 	}
 
+	/**
+	 * [바로 구매 페이지 이동]
+	 *
+	 * @author ryugyunguoon
+	 */
+	@PostMapping("/buyNow-form")
+	public String buyNowForm(Model model, ProductBuyNowRequest request){
+		model.addAttribute("product", request);
+		return "/product/product_buy_now";
+	}
 }

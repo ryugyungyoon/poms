@@ -3,6 +3,9 @@ server:
 
 #공통 설정
 spring:
+  # profiles
+  profiles:
+    default: local
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
@@ -25,6 +28,7 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
+
 logging:
   config: classpath:log4j2.yml
 
