@@ -449,9 +449,8 @@
 	}
 
 </style>
-<script type="text/javascript">
+<script th:inline="javascript">
 	$(function(){
-
 		//상품 상세 정보 조회
 		//cinit_view('/product/view', 'productIdx');
 
@@ -481,22 +480,26 @@
 	function fn_addProduct(val, text){
 		$('#productOptions').css('display', 'block');
 
+		let originalPrice = $('#originalPrice').val();
+		let discountPercent = $('#discountPercent').val();
+		let discountPrice = originalPrice - (originalPrice / 100 * discountPercent);
+
 		let htmlStr = '';
 		htmlStr += '<li>';
-		htmlStr += '	<input type="hidden" name="option" th:value="'+text+'"/>';
+		htmlStr += '	<input type="hidden" name="options" value="'+text+'"/>';
 		htmlStr += '	<em>'+text+'</em>';
 		htmlStr += '	<div class="flex jc-sb">';
 		htmlStr += '		<div class="amount" id="amount">';
-		htmlStr += '			<input type="text" name="productAmoumt" value="1" readonly>';
+		htmlStr += '			<input type="text" name="amounts" value="1" readonly>';
 		htmlStr += '			<div class="amount-btn-wrap">';
 		htmlStr += '				<button type="button" class="btn_bg btn_plus" onclick="fn_calcAmount(\'add\', jQuery(this));" title="수량 증가"></button>';
 		htmlStr += '				<button type="button" class="btn_bg btn_minus" onclick="fn_calcAmount(\'minus\', jQuery(this));" title="수량 감소"></button>';
 		htmlStr += '			</div>';
 		htmlStr += '		</div>';
 		htmlStr += '		<div class="price" id="price">';
-		htmlStr += '			<input type="hidden" name="price" th:value="${product.price}"/>';
+		htmlStr += '			<input type="hidden" name="prices" value="'+discountPrice+'"/>';
 		htmlStr += '			<span>';
-		htmlStr += '				<b>107,400</b>원';
+		htmlStr += '				<b>'+cfmt_numAddComma(discountPrice)+'</b>원';
 		htmlStr += '			</span>';
 		htmlStr += '		</div>';
 		htmlStr += '	</div>';
@@ -505,21 +508,31 @@
 		$('#productOptions ul').append(htmlStr);
 		console.log(val);
 		console.log(text);
+
+		$('#originalDiscountPrice').val(discountPrice);
 	}
 
 	//상품 수량 증가, 감소 버튼 함수
 	function fn_calcAmount(calcType, reqObj){
-		let productAmoumt = $(reqObj).parent().parent().find('input[name="productAmoumt"]');
-		let productAmoumtVal = Number(productAmoumt.val());
+		let productAmount = $(reqObj).parent().parent().find('input[name="amounts"]');
+		let productAmountVal = Number(productAmount.val());
+		let discountPrice = $(reqObj).parent().parent().parent().parent().find('input[name="prices"]');
+		let discountPriceText = $(reqObj).parent().parent().parent().parent().find('b');
 		if(calcType === 'add'){
-			productAmoumt.val(productAmoumtVal+1);
+			productAmount.val(productAmountVal+1);
 		}
 		else if(calcType === 'minus'){
-			if(productAmoumtVal > 1){
-				productAmoumt.val(productAmoumtVal-1);
+			if(productAmountVal > 1){
+				productAmount.val(productAmountVal-1);
 			}
 		}
 		else{}
+
+		let discountPriceVal = $('#originalDiscountPrice').val() * Number(productAmount.val());
+		console.log('상품 가격 : '+discountPrice.val()+' // 상품 갯수 : '+Number(productAmount.val())+' // 상품 총합 : '+discountPriceVal);
+
+		discountPrice.val(discountPriceVal);
+		discountPriceText.text(cfmt_numAddComma(discountPriceVal));
 	}
 
 	//상품 X 표시 클릭시 상품 삭제하는 함수
@@ -625,7 +638,7 @@
 								<em>102,388</em>원
 								<span class="discount-percent">42%</span>
 								<input type="hidden" name="discountPrice"/>
-								<input type="hidden" name="discountPercent"/>
+								<input type="hidden" name="discountPercent" id="discountPercent" value="42"/>
 							</dd>
 						</dl>
 						<button class="down-cupon">쿠폰받기</button>
@@ -744,6 +757,8 @@
 							<!-- 좋아요 영역 -->
 						</ul>
 					</div>
+					<input type="hidden" name="originalPrice" id="originalPrice" th:value="${product.price}">
+					<input type="hidden" name="originalDiscountPrice" id="originalDiscountPrice">
 				</form>
 				<div class="info">
 					<dl>
@@ -860,7 +875,7 @@
 		<!-- 배송 유의사항 -->
 	</div>
 	<form name="searchForm" id="searchForm">
-		<input type="hidden" name="productIdx" id="productIdx" th:value="${productIdx}">
+		<input type="hidden" name="productIdx" id="productIdx" th:value="${product.productIdx}">
 	</form>
 </th:block>
 </body>

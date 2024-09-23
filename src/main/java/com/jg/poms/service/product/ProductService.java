@@ -74,6 +74,6 @@ public class ProductService {
 
 	@Transactional
 	public ProductResponse view(Long productIdx){
-		return new ProductResponse(productRepository.findById(productIdx).get());
+		return new ProductResponse(productRepository.findById(productIdx).orElseThrow(IllegalArgumentException::new));
 	}
 }

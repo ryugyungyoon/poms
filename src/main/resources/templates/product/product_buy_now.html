@@ -69,6 +69,38 @@
 		outline: none;
 	}
 
+	table.tbl-product th {
+		padding: 25px 0;
+		height: 68px;
+		font-size: 14px;
+		color: #000;
+		text-align: center;
+		vertical-align: middle;
+		border-bottom: 1px solid #d9d9d9;
+	}
+
+	table.tbl-product td {
+		padding: 14px 0;
+		text-align: center;
+		height: auto;
+		border-top-width: 0;
+		border-bottom: 1px solid #f9f9f9;
+	}
+
+	table.tbl-product td.product {
+		padding: 20px 10px 20px 10px;
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start
+	}
+
+	table.tbl-product td.price {
+		font-size: 14px;
+		color: #000;
+		line-height: 20px;
+		position: relative;
+	}
+
 	.payment_wrap .payment_info .select_billing {
 		padding-left: 68px;
 		margin-bottom: 16px;
@@ -93,7 +125,7 @@
 	}
 
 	.payment_wrap .payment_info .busi_wrap {
-        border-bottom: 1px dotted #d9d9d9;
+		border-bottom: 1px dotted #d9d9d9;
 	}
 
 	.payment_wrap .payment_info .busi_wrap select {
@@ -233,7 +265,7 @@
 		</div>
 		<div>
 			<h2>주문상품</h2>
-			<table>
+			<table class="tbl-product">
 				<colgroup>
 					<col style="width:115px">
 					<col style="width:150px">
@@ -250,16 +282,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>
+					<tr th:each="item : ${product.combinedData}" th:value="${product.productIdx}">
+						<td class="product">
 							<div></div>
-							<div></div>
+							<div>
+								<span th:text="${item.option}"></span>
+							</div>
 						</td>
-						<td>1</td>
-						<td>
-							<div></div>
+						<td th:text="${item.amount}">1</td>
+						<td class="price">
+							<div>
+								<span th:text="${#numbers.formatInteger(product.originalPrice, 0, 'COMMA')}"></span>
+								<span th:text="${#numbers.formatInteger(product.originalDiscountPrice, 0, 'COMMA')}"></span>
+							</div>
 						</td>
-						<td><strong>116,350</strong></td>
+						<td><strong th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')}">116,350</strong></td>
 						<td>무료배송</td>
 					</tr>
 				</tbody>

@@ -48,10 +48,10 @@ public class Product {
 
 	//리뷰와 연관 관계 설정
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> productReviewList = new ArrayList<>();
+	private List<Review> productReviewList = new ArrayList<>();
 
 	//JPA 사용을 위한 기본생성자
 	public Product() {
-    }
+	}
 
 }

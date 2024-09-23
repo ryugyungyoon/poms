@@ -3,6 +3,7 @@ package com.jg.poms.controller.product;
 import com.jg.poms.core.http.HttpBuilder;
 import com.jg.poms.core.http.ResponseVO;
 import com.jg.poms.dto.product.request.ProductBuyNowRequest;
+import com.jg.poms.dto.product.response.ProductBuyNowResponse;
 import com.jg.poms.dto.product.response.ProductResponse;
 import com.jg.poms.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +50,7 @@ public class ProductController {
 	@GetMapping("/view-form")
 	public String veiwForm(Model model, @RequestParam("productIdx") Long productIdx){
 		model.addAttribute("product", productService.view(productIdx));
+		model.addAttribute("product2", productService.view(productIdx).getProductIdx());
 		return "/product/product_view";
 	}
 
@@ -70,7 +72,9 @@ public class ProductController {
 	 */
 	@PostMapping("/buyNow-form")
 	public String buyNowForm(Model model, ProductBuyNowRequest request){
-		model.addAttribute("product", request);
+		log.info("############### request {}",request.toString());
+		ProductBuyNowResponse response = new ProductBuyNowResponse(request);
+		model.addAttribute("product", response);
 		return "/product/product_buy_now";
 	}
 }
