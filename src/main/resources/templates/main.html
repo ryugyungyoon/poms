@@ -10,7 +10,9 @@
 	<script type="text/javascript">
 		$(function () {
 			//상품 전체 리스트 조회
-			cinit_list('/product/list');
+			//cinit_list('/product/list');
+
+			//cinit_list('/category/all/list', 'categoryList');
 
 		});
 
@@ -21,6 +23,7 @@
 
 		//요청 결과 처리 ajax callback
 		function fn_callback(callbackId, resData) {
+/*
 			if (callbackId === 'categoryList') { //여성 의류 카테고리에 해당하는 상품 리스트 조회
 				let categoryList = resData.body.list;
 
@@ -28,6 +31,7 @@
 
 			} else {
 			}
+			*/
 		}
 	</script>
 	<style>

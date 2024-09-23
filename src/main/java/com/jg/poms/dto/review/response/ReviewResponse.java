@@ -2,6 +2,7 @@ package com.jg.poms.dto.review.response;
 
 import com.jg.poms.domain.review.Review;
 import com.jg.poms.domain.review.ReviewImage;
+import com.jg.poms.domain.user.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -22,7 +23,12 @@ public class ReviewResponse {
 
 	public ReviewResponse(Review review) {
 		this.reviewIdx = review.getReviewIdx();
-        this.userId = review.getUser().getId();
+		User user = review.getUser();
+		if (user != null) {
+			this.userId = user.getId();
+		} else {
+			this.userId = null;
+		}
         this.content = review.getContent();
         this.starRating = review.getStarRating();
         this.deleteYn = review.isDeleteYn();

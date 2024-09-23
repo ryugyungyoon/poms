@@ -22,61 +22,6 @@ public class UserController {
     public String loginForm(){
         return "nonlogin/login-form";
     }
-/*
-    @PostMapping("login")
-    @ResponseBody
-    public String User(Model model, CustomUserDetails userDetails){
-
-        log.debug("로그인 정보 : {}",userDetails);
-
-        if(userDetails != null){
-            User loginUser = userService.getLoginUserById(userDetails.getUsername());
-            if(loginUser != null){
-                model.addAttribute("name", loginUser.getName());
-            }
-        }
-        return "main";
-    }
-
- */
-/*
-    @GetMapping("login")
-    public String User(Model model, PrincipalDetails principal){
-        log.debug("auth {}",principal);
-        if(principal != null){
-            User loginUser = userService.getLoginUserById(principal.getUsername());
-            if(loginUser != null){
-                model.addAttribute("name", loginUser.getName());
-            }
-        }
-        return "main";
-    }
-*/
-
-    //안쓰는 메소드임(스프링 시큐리티에서 로그인 성공시 페이지 지정)
-    /**
-     * [로그인 성공후 이동]
-     *
-     * @author zisooya
-     * @return String
-     */
-    @GetMapping("login-success")
-    public String loginSuccess(){
-        log.debug("로그인 성공 후 들어옴");
-        return "redirect:/main";
-    }
-
-    /**
-     * [로그인 실패후 이동]
-     *
-     * @author zisooya
-     * @return String
-     */
-    @GetMapping("login-fail")
-    public String loginFail(){
-        return "nonlogin/login_form";
-    }
-
 
     @GetMapping("terms-form")
     public String termsForm(){
@@ -93,6 +38,7 @@ public class UserController {
     public User saveUser(UserCreateRequest request){
         return userService.saveUser(request);
     }
+
     @PostMapping("certify")
     @ResponseBody
     public String certify(@RequestParam("contactNumber") String contactNumber){

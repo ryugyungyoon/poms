@@ -36,7 +36,7 @@ public class CategoryController{
 		model.addAttribute("categoryIdx", categoryIdx);
 
 		//model.addAttribute("searchForm", searchForm);
-		return "/menu/category/women/category_list";
+		return "menu/category/women/category_list";
 	}
 	/**
 	 * [카테고리 전체 리스트 조회]
